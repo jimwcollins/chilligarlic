@@ -1,0 +1,28 @@
+/*-------------------------*/
+/*---- CHILLI+GARLIC ------*/
+/*------    Base    -------*/
+/*-------------------------*/
+
+// Global reset
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+// Remove automatic border around all focused items
+*:focus {
+    outline: none;
+}
+
+html {
+    box-sizing: border-box;
+
+    // Set value of 1 rem
+    // 1 rem = 10 pixels
+    // 10/16 = 62.5%
+    font-size: 62.5%;
+}
+

@@ -1,0 +1,59 @@
+/*-------------------------*/
+/*---- CHILLI+GARLIC ------*/
+/*---      Footer    ------*/
+/*-------------------------*/
+
+.footer {
+    // Positon
+    grid-column: full-start / full-end;
+
+    // Display
+    display: grid;
+    grid-template-columns: 1fr min-content 1fr;
+    align-items: center;
+
+    // Style
+    background-color: rgba($color-greygreen, .3);
+    height: 6rem;
+    margin-top: 5rem; // Standard space at the top for all pages
+
+    &__nav {
+        display: grid;
+        grid-template-columns: repeat(4, min-content);
+        grid-gap: 1.5rem;
+        justify-content: end;
+        justify-items: end;
+
+        list-style: none;
+
+        &__link:link,
+        &__link:visited {
+            display: block;
+
+            font-family: $font-body;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: $color-black;
+            text-decoration: none;
+            
+            transition: all .5s;
+        }
+
+        &__link:active,
+        &__link:hover {
+            color: $color-primary;
+        }
+    }
+
+    &__logo {
+        justify-self: center;
+        height: 4rem;
+        margin: 0 1rem;
+    }
+
+    &__text {
+        justify-self: flex-start;
+
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,25 @@
+/*-------------------------*/
+/*--   CHILLI+GARLIC     --*/
+/*-    Icon component    --*/
+/*-------------------------*/
+
+.icon {
+
+    &__box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 3.5rem;
+        width: 3.5rem;
+        border: 2px solid $color-white;
+        border-radius: 50%;
+    }
+
+    &__image {
+        height: 65%;
+        width: 65%;
+        fill: $color-white;
+    }
+
+}

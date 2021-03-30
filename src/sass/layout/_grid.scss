@@ -1,0 +1,26 @@
+/*-------------------------*/
+/*---- CHILLI+GARLIC ------*/
+/*------ Grid.scss -------*/
+/*-------------------------*/
+
+/**************************************************************************
+*   BASE GRID
+*
+*   ROWS
+*   - Defined by page
+*
+*   COLUMNS
+*   - Total content width • 1140px
+*   - Left margin • 6rem min, 1fr max
+*       -- Margins will shrink first, but will always be min of 6rem
+*   - 12 central columns • minimum to fit content in, max 9.5rem so 95px
+*   - Right margin • 6rem min, 1fr max
+*
+***************************************************************************/
+
+.grid {
+    display: grid;
+
+    grid-template-columns: [full-start] minmax(6rem, 1fr) [content-start] repeat(15,  [col-start] minmax(min-content, 6.2rem) [col-end]) [content-end] minmax(6rem, 1fr) [full-end];
+    column-gap: 1.5rem;
+}

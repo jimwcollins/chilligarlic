@@ -1,0 +1,43 @@
+/*-------------------------*/
+/*--   CHILLI+GARLIC     --*/
+/*-     Search.scss      --*/
+/*-------------------------*/
+
+.search {
+
+    &__form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 80%;
+        height: 3rem;
+        border-radius: 25px;
+        background-color: $color-grey-light-1;
+        border: none;
+    }
+
+    &__input {
+        width: 85%;
+        border: none;
+        background: transparent;
+        padding: 1rem 1rem;
+        // margin-right: -3.5rem; // Move right so button appears on top of input field.
+
+        font-family: inherit;
+        font-size: 1.3rem;
+        color: inherit;
+    }
+
+    &__button {
+        border: none;
+        background-color: $color-grey-light-1;
+    }
+
+    &__icon {
+        height: 2rem;
+        width: 2rem;
+        fill: $color-primary;
+    }
+
+}

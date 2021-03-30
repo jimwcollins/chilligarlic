@@ -1,0 +1,19 @@
+/*-------------------------*/
+/*--   CHILLI+GARLIC     --*/
+/*-    Image component   --*/
+/*-------------------------*/
+
+.image {
+    &__hero {
+        // Position
+        grid-column: full-start / full-end;
+
+        // Style
+        background-image: url("../img/Food/Seafood\ linguini.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        // background-position: 0% 60%; 
+        background-color: rgba($color-primary, 0.1);
+        height: 55rem;
+    }
+}

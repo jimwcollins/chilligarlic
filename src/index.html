@@ -1,0 +1,293 @@
+<!------------------------->
+<!---- CHILLI+GARLIC ------>
+<!------ Index.html ------->
+<!------------------------->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Responsive design only works because of this property -->
+    <!-- Width of website content is set to the device width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;600;700&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Chilli + Garlic</title>
+  </head>
+
+  <body class="homepage grid">
+    <!-- Hero section-->
+    <section class="hero">
+      <!-- Header -->
+      <header class="header grid" data-theme="header-home">
+        <!-- Logo -->
+        <a href="/" class="header__logo"
+          ><img
+            src="img/Logo/Chill_Logo_Red.png"
+            alt=""
+            class="header__logo__img"
+        /></a>
+
+        <!-- Nav elements -->
+        <nav class="header__nav">
+          <!-- Faves dropdown menu-->
+          <div class="menu">
+            <!-- Fave Icon -->
+            <figure class="header__icon">
+              <svg class="header__icon__svg">
+                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-heart"></use>
+              </svg>
+            </figure>
+
+            <!-- Fave Dropdown -->
+            <div class="menu__panel">
+              <div class="menu__dropdown" id="menu__faves">
+                <div class="menu__dropdown__header">
+                  <p class="menu__dropdown__header__text">My Favourites</p>
+                  <svg class="menu__dropdown__header__icon" id="faves__edit">
+                    <use
+                      xlink:href="img/Chilli_Icons_Sprite.svg#icon-pencil"
+                    ></use>
+                  </svg>
+                  <svg class="menu__dropdown__header__icon" id="faves__clear">
+                    <use
+                      xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"
+                    ></use>
+                  </svg>
+                </div>
+
+                <div class="menu__placeholder" id="faves__placeholder">
+                  <p class="menu__placeholder__text">
+                    Love a recipe? This could be its new home!
+                  </p>
+                </div>
+
+                <ul id="faves__list">
+                  <!-- <li class="menu__dropdown__item fave__item">
+                                        <a href="" class="fave__link"></a>
+                                        <img src="img/Food/Ham Rocket Pizza.jpg" alt="" class="fave__img">
+                                        <div class="fave__details">
+                                            <p class="fave__details__title">Ham and rocket pizza</p>
+                                            <p class="fave__details__author">Chilli & Garlic</p>
+                                        </div>
+                                        <svg class="menu__dropdown__del">
+                                            <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"></use>
+                                        </svg>
+                                    </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shopping list dropdown menu-->
+          <div class="menu">
+            <!-- Shopping List icon-->
+            <figure class="header__icon">
+              <svg class="header__icon__svg">
+                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-list2"></use>
+              </svg>
+            </figure>
+
+            <!-- Shopping List dropdown-->
+            <div class="menu__panel">
+              <div class="menu__dropdown" id="menu__shopList">
+                <div class="menu__dropdown__header">
+                  <p class="menu__dropdown__header__text">My Shopping List</p>
+                  <svg class="menu__dropdown__header__icon" id="shopList__edit">
+                    <use
+                      xlink:href="img/Chilli_Icons_Sprite.svg#icon-pencil"
+                    ></use>
+                  </svg>
+                  <svg
+                    class="menu__dropdown__header__icon"
+                    id="shopList__clear"
+                  >
+                    <use
+                      xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"
+                    ></use>
+                  </svg>
+                </div>
+
+                <div class="menu__placeholder" id="shopList__placeholder">
+                  <p class="menu__placeholder__text">
+                    Make your shopping list happy by filling it with lovely
+                    ingredients.
+                  </p>
+                </div>
+
+                <ul id="shopList__list">
+                  <!--
+                                    <li class="menu__dropdown__item shoplist__item">
+                                        <p class="shoplist__text shoplist__quantity">250g</p>
+                                        <p class="shoplist__text shoplist__ingredient">farfalle pasta</p>
+                                        <svg class="menu__dropdown__del">
+                                            <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"></use>
+                                        </svg>
+                                    </li>
+                                    -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Search box-->
+      <div class="hero__search">
+        <h1 class="heading--main">Temptation awaits...</h1>
+
+        <form
+          action="searchResults.html"
+          class="search__form"
+          method="GET"
+          id="search"
+        >
+          <input
+            type="text"
+            class="search__input"
+            name="search"
+            placeholder="Search recipes"
+            autocomplete="off"
+            id="search-form"
+          />
+          <button class="search__button">
+            <svg class="search__icon">
+              <use
+                xlink:href="img/Chilli_Icons_Sprite.svg#icon-magnifying-glass"
+              ></use>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <section class="about">
+      <h1 class="heading--main">Inform • Delight • Inspire</h1>
+
+      <div class="box">
+        <figure class="box__figure">
+          <img
+            src="img/Home/author_image.jpg"
+            alt="Authors"
+            class="box__image"
+          />
+        </figure>
+
+        <div class="box__text">
+          <p class="paragraph">
+            Here at Chilli + Garlic we have a simple mission: to get as many
+            people cooking and loving their food as we possibly can. When we
+            first started our blog, we never imagined where this journey would
+            take us, yet we remain as passionate about food today as we were
+            when cooking in our tiny home kitchen five short years ago.
+          </p>
+
+          <p class="paragraph">
+            We want you to share that passion. We want you to cook more of what
+            you want, how you want it, when you want it. If you’re going to eat
+            three times a day, you may as well eat food you love, right? So
+            strap on your apron, roll up your sleeves and get cooking!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <figure class="gallery__figure--1">
+        <img
+          src="img/Home/Gallery/Gallery 1_Kitchen.jpg"
+          alt=""
+          class="gallery__image"
+        />
+      </figure>
+      <figure class="gallery__figure--2">
+        <img
+          src="img/Home/Gallery/Gallery 2_Table.jpg"
+          alt=""
+          class="gallery__image"
+        />
+      </figure>
+      <figure class="gallery__figure--3">
+        <img
+          src="img/Home/Gallery/Gallery 3_Jars.jpg"
+          alt=""
+          class="gallery__image"
+        />
+      </figure>
+      <figure class="gallery__figure--4">
+        <img
+          src="img/Home/Gallery/Gallery 4_Spoons.jpg"
+          alt=""
+          class="gallery__image"
+        />
+      </figure>
+      <figure class="gallery__figure--5">
+        <img
+          src="img/Home/Gallery/Gallery 5_Cupboard.jpg"
+          alt=""
+          class="gallery__image"
+        />
+      </figure>
+      <figure class="gallery__figure--6">
+        <img
+          src="img/Home/Gallery/Gallery 6_Hands.jpg"
+          alt=""
+          class="gallery__image"
+        />
+      </figure>
+      <figure class="gallery__figure--7">
+        <img
+          src="img/Home/Gallery/Gallery 7_Anise.jpg"
+          alt=""
+          class="gallery__image"
+        />
+      </figure>
+      <figure class="gallery__figure--8">
+        <img
+          src="img/Home/Gallery/Gallery 8_Pizza.jpg"
+          alt=""
+          class="gallery__image"
+        />
+      </figure>
+      <figure class="gallery__figure--9">
+        <img
+          src="img/Home/Gallery/Gallery 9_Pasta.jpg"
+          alt=""
+          class="gallery__image"
+        />
+      </figure>
+    </section>
+
+    <footer class="footer">
+      <ul class="footer__nav">
+        <li class="footer__nav__item">
+          <a href="" class="footer__nav__link">Contact</a>
+        </li>
+        <li class="footer__nav__item">
+          <a href="" class="footer__nav__link">Disclaimer</a>
+        </li>
+        <li class="footer__nav__item">
+          <a href="" class="footer__nav__link">Privacy</a>
+        </li>
+        <li class="footer__nav__item">
+          <a href="" class="footer__nav__link">Cookies</a>
+        </li>
+      </ul>
+
+      <img
+        src="img/Logo/Chill_Logo_Small_Red.png"
+        alt=""
+        class="footer__logo"
+      />
+
+      <p class="footer__text">
+        Designed and coded by James Collins © Chilli+Garlic 2020
+      </p>
+    </footer>
+  </body>
+</html>

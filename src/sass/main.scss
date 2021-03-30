@@ -1,0 +1,22 @@
+/*-------------------------*/
+/*---- CHILLI+GARLIC ------*/
+/*------ Main.scss -------*/
+/*-------------------------*/
+
+@import "abstracts/variables";
+
+@import "base/base";
+@import "base/typography";
+
+@import "components/box";
+@import "components/icon";
+@import "components/image";
+@import "components/search";
+
+@import "layout/footer";
+@import "layout/grid";
+@import "layout/header";
+
+@import "pages/home";
+@import "pages/recipe";
+@import "pages/searchResults";
