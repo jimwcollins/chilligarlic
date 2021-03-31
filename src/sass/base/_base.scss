@@ -7,22 +7,25 @@
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
 // Remove automatic border around all focused items
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    // Set value of 1 rem
-    // 1 rem = 10 pixels
-    // 10/16 = 62.5%
-    font-size: 62.5%;
+  // Set value of 1 rem
+  // 1 rem = 10 pixels
+  // 10/16 = 62.5%
+  font-size: 62.5%;
 }
 
+body {
+  overscroll-behavior-y: none; // This prevents overscrolling of page past top/bottom boundaries
+}
