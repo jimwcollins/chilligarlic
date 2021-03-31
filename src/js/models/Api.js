@@ -12,15 +12,22 @@ const recipeApi = axios.create({
   baseURL: 'https://api.spoonacular.com/',
 });
 
-export const searchRecipes = async (query) => {
-  const {
-    data: { results },
-  } = await recipeApi.get('recipes/complexSearch', {
-    params: {
-      query,
-      apiKey,
-    },
-  });
+export const searchRecipes = async (query, page) => {
+  const offset = (page - 1) * 9;
 
-  return results;
+  const { data: result, request: status } = await recipeApi.get(
+    'recipes/complexSearch',
+    {
+      params: {
+        query,
+        apiKey,
+        number: 9,
+        offset,
+      },
+    }
+  );
+
+  return { result, status };
 };
+
+export const getRecipe = async (recipeId) => {};

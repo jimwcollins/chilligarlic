@@ -25,9 +25,8 @@ export const getSearchInput = () => {
 };
 
 // Render the search results
-export const renderResults = (query, results) => {
-  // First render the query as the title of the page
-  renderTitle(query, results.length);
+export const renderResults = (query, results, numRetrieved, numTotal, page) => {
+  renderTitle(query, numRetrieved, numTotal, page);
 
   // If there are any results to render...
   if (results) {
@@ -37,24 +36,23 @@ export const renderResults = (query, results) => {
 };
 
 // Display the query as the title of the search results page
-export const renderTitle = (query, numResults) => {
-  // Construct title HTML using query text and number of results
-  // Call capitalize function on query
-  const titleHTML = `
-        <h1 class="heading--main">${capitalize(query)}</h1>
-        <p class="heading--subtitle">Showing ${numResults} results</p>
-    `;
+const renderTitle = (query, numRetrieved, numTotal, page) => {
+  // Insert title info into the DOM if this is our first time displaying the results
+  if (page === 1) {
+    document.querySelector(
+      domStrings.searchResultsTitle
+    ).innerHTML = capitalize(query);
+  }
 
-  // Insert title info into the DOM
-  document
-    .querySelector(domStrings.searchResultTitle)
-    .insertAdjacentHTML('beforeend', titleHTML);
+  document.querySelector(
+    domStrings.searchResultsStatus
+  ).innerHTML = `Showing ${numRetrieved} of ${numTotal} results`;
 };
 
 const renderItem = (item) => {
   // Construct html with info from our search
   const item_HTML = `
-        <a href="recipe.html?rID=${item.id}&return=true" class="search-results__link" href="${item.recipe_id}">
+        <a href="recipe.html?rID=${item.id}&return=true" class="search-results__link">
             <figure class="search-results__item">
                 <img src="${item.image}" class="search-results__img">
             </figure>
@@ -64,6 +62,6 @@ const renderItem = (item) => {
 
   // Now insert the html into the searh results grid in the DOM
   document
-    .querySelector(domStrings.searchResultGrid)
+    .querySelector(domStrings.searchResultsGrid)
     .insertAdjacentHTML('beforeend', item_HTML);
 };
