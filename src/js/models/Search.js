@@ -22,15 +22,13 @@ export default class Search {
     try {
       this.page = page;
       const { result, status } = await searchRecipes(this.query, this.page);
-      console.log('Api result:', result);
-      console.log('Api status:', status);
 
       if (status.status !== 200)
         throw `Error retrieving results: ${status.status}, ${status.statusText}`;
 
       this.currResults = result.results;
       this.allResults.push(...result.results);
-      this.numRetrieved += result.number;
+      this.numRetrieved += result.results.length;
       if (page === 1) this.numTotal = result.totalResults;
       if (this.numRetrieved === this.numTotal) this.allRetrieved = true;
     } catch (error) {
