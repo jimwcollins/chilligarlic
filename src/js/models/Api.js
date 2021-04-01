@@ -15,19 +15,31 @@ const recipeApi = axios.create({
 export const searchRecipes = async (query, page) => {
   const offset = (page - 1) * 9;
 
-  const { data: result, request: status } = await recipeApi.get(
-    'recipes/complexSearch',
+  const { data: result } = await recipeApi.get('recipes/complexSearch', {
+    params: {
+      query,
+      apiKey,
+      number: 9,
+      offset,
+    },
+  });
+
+  console.log('Results from API', result);
+
+  return result;
+};
+
+export const fetchRecipe = async (recipeId) => {
+  const { data: recipe } = await recipeApi.get(
+    `recipes/${recipeId}/information`,
     {
       params: {
-        query,
         apiKey,
-        number: 9,
-        offset,
       },
     }
   );
 
-  return { result, status };
-};
+  console.log('Recipe from API', recipe);
 
-export const getRecipe = async (recipeId) => {};
+  return recipe;
+};

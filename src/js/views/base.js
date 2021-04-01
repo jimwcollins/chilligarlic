@@ -49,7 +49,7 @@ export const domStrings = {
   recipeFaves: '.faves__icon',
   ingredients: 'ingredients',
   recipeShopList: '.ingredients__icon',
-  method: 'method',
+  method: '.method__steps',
   btnFaves: 'btnFaves',
 };
 

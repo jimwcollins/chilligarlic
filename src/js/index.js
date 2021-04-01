@@ -135,9 +135,7 @@ const ctrlRecipe = async () => {
   ctrlAddRecipeListeners();
 
   // 1. Get params and set recipe ID and return status
-  const objParams = recipeView.getRecipeParams();
-
-  const recipeID = objParams.recipeID;
+  const { recipeID } = recipeView.getRecipeParams();
 
   if (recipeID) {
     // 2. Construct recipe object
@@ -147,21 +145,13 @@ const ctrlRecipe = async () => {
       // 3. Retrieve recipe details
       await state.recipe.getRecipe();
 
-      // 4. Calculate servings and time
-      state.recipe.calcTime();
-      state.recipe.calcServings();
-
       // 5. Parse ingredients
-      state.recipe.parseIngredients();
+      // state.recipe.parseIngredients();
 
       // 6. Is it a fave? If so, set flag
       if (state.faves.isFave(recipeID)) {
-        console.log('This is already a fave');
         state.recipe.isFave = true;
       }
-
-      // 7. Set return status
-      state.recipe.returnStatus = objParams.returnStatus;
 
       // 8. Render to UI
       recipeView.renderRecipe(state.recipe);

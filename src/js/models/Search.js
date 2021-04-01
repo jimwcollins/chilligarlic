@@ -21,10 +21,7 @@ export default class Search {
   async getResults(page = 1) {
     try {
       this.page = page;
-      const { result, status } = await searchRecipes(this.query, this.page);
-
-      if (status.status !== 200)
-        throw `Error retrieving results: ${status.status}, ${status.statusText}`;
+      const result = await searchRecipes(this.query, this.page);
 
       this.currResults = result.results;
       this.allResults.push(...result.results);
