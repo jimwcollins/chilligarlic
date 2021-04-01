@@ -4,290 +4,285 @@
 /*-------------------------*/
 
 .recipe {
-    grid-column: full-start / full-end;
+  grid-column: full-start / full-end;
 
-    // grid-template-rows: repeat(2, min-content) 55rem repeat(2, min-content);
+  // grid-template-rows: repeat(2, min-content) 55rem repeat(2, min-content);
 }
 
 .recipe-heading {
+  grid-column: content-start / content-end;
+  margin-bottom: 4.5rem;
 
-    grid-column: content-start / content-end;
-    margin-bottom: 4.5rem;
+  &__title {
+    font-size: 4.25rem;
+    color: $color-black;
+    margin-bottom: 1rem;
+  }
 
-    &__title {
-        font-size: 4.25rem;
-        color: $color-black;
-        margin-bottom: 1rem;
-    }
-
-    &__author {
-        text-align: center;
-        font-family: $font-body;
-        font-weight: 400;
-        font-size: 1.5rem;
-        letter-spacing: 1.25px;
-        text-transform: uppercase;
-        color: $color-primary;
-    }
+  &__author {
+    text-align: center;
+    font-family: $font-body;
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    color: $color-primary;
+  }
 }
 
 // Set base properties for the details box
 .recipe-info {
-    grid-column: content-start / span 4;
+  grid-column: content-start / span 4;
 
-    font-weight: 300;
-    font-size: 1.6rem;
+  font-weight: 300;
+  font-size: 1.6rem;
 
-    margin: 5rem 0;
+  margin: 5rem 0;
 
-    &__box {
-        position: relative;
-        padding-right: 2rem;
-        
-        // Add border to the right with a pseudoelelement to give us more control over length
-        &::after {
-            position: absolute;
-            height: 98.5%;
-            top: 0.75rem;
-            right: 0;
-            content: "";
-            border-right: 2px solid;
-        }
-    }
+  &__box {
+    position: relative;
+    padding-right: 2rem;
 
-    &__item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.5rem;
-        margin-left: -.2rem;
-
-        &__icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-    
-            height: 2.5rem;
-            width: 2.5rem;
-            border: 1.5px solid;
-            border-radius: 50%;
-            margin-right: 1rem;
-    
-            // Specific setting for user icon
-            &--user {
-                @extend .recipe-info__item__icon;
-                align-items: flex-end;
-                padding-top: 2px; // Move the user icon down to be flush with bottom of circle
-                overflow: hidden;
-            }
-        }
-    
-        &__svg {
-            height: 65%;
-            width: 65%;
-    
-            &--user {
-                height: 92%;
-                width: 92%;
-            }
-        }
-        
-        &__text {
-            font-weight: 400;
-            font-size: 1.5rem;
-        }
-
-        &__text--hover {
-            @extend .recipe-info__item__text;
-            opacity: 0;
-            visibility: hidden;
-            transition: all .5s;
-        }
-
-        &__icon--hover:hover + &__text--hover {
-            opacity: 1;
-            visibility: visible;
-        }
-    } // End of recipe info item style
-
-
-
-} // End of recipe info style
-
-
-// Add specific properties (i.e. colour) for the detail section
-.recipe-details {
-    --details-color: var(--color-secondary);
-    margin-bottom: 4rem;
-
+    // Add border to the right with a pseudoelelement to give us more control over length
     &::after {
-        border-color: var(--details-color);
+      position: absolute;
+      height: 98.5%;
+      top: 0.75rem;
+      right: 0;
+      content: '';
+      border-right: 2px solid;
     }
-    
-    & > .heading--subhead {
-        color: var(--details-color);
-    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    margin-left: -0.2rem;
 
     &__icon {
-        border-color: var(--details-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 2.5rem;
+      width: 2.5rem;
+      border: 1.5px solid;
+      border-radius: 50%;
+      margin-right: 1rem;
+
+      // Specific setting for user icon
+      &--user {
+        @extend .recipe-info__item__icon;
+        align-items: flex-end;
+        padding-top: 2px; // Move the user icon down to be flush with bottom of circle
+        overflow: hidden;
+      }
     }
 
     &__svg {
-        fill: var(--details-color);
+      height: 65%;
+      width: 65%;
+
+      &--user {
+        height: 92%;
+        width: 92%;
+      }
     }
 
-    &__servings {
-        display: flex;
-        align-items: center;
-        margin-left: 1rem;
-        padding-top: .25rem;
-
-        visibility: hidden;
-        opacity: 0;
-        transition: all .5s;
-
-        &__svg {
-            margin-right: .25rem;
-            height: 1.6rem;
-            width: 1.6rem;
-            fill: rgba($color-secondary, 0.5);
-            cursor: pointer;
-            transition: fill .5s;
-
-            &:hover {
-                fill: rgba($color-secondary, 1);
-            }
-        }
-
-        &--active {
-            visibility: visible;
-            opacity: 1;
-        }
+    &__text {
+      font-weight: 400;
+      font-size: 1.5rem;
     }
+
+    &__text--hover {
+      @extend .recipe-info__item__text;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s;
+    }
+
+    &__icon--hover:hover + &__text--hover {
+      opacity: 1;
+      visibility: visible;
+    }
+  } // End of recipe info item style
+} // End of recipe info style
+
+// Add specific properties (i.e. colour) for the detail section
+.recipe-details {
+  --details-color: var(--color-secondary);
+  margin-bottom: 4rem;
+
+  &::after {
+    border-color: var(--details-color);
+  }
+
+  & > .heading--subhead {
+    color: var(--details-color);
+  }
+
+  &__icon {
+    border-color: var(--details-color);
+  }
+
+  &__svg {
+    fill: var(--details-color);
+  }
+
+  &__servings {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    padding-top: 0.25rem;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+
+    &__svg {
+      margin-right: 0.25rem;
+      height: 1.6rem;
+      width: 1.6rem;
+      fill: rgba($color-secondary, 0.5);
+      cursor: pointer;
+      transition: fill 0.5s;
+
+      &:hover {
+        fill: rgba($color-secondary, 1);
+      }
+    }
+
+    &--active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 }
 
 // Add specific properties for the fave icon and text
 .faves {
+  &__icon {
+    cursor: pointer;
+    border-color: var(--details-color);
+  }
 
-    &__icon {
-        cursor: pointer;
-        border-color: var(--details-color);
+  &__svg {
+    stroke: var(--details-color);
+    stroke-width: 2px;
+    fill: none;
+    transition: all 1s;
+  }
+
+  &--isFave {
+    fill: var(--details-color);
+    transition: all 1s;
+  }
+
+  &__faveText {
+    display: none;
+  }
+
+  &__nonFaveText {
+    display: block;
+  }
+
+  &__text {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+
+    &--visible {
+      height: auto;
+      opacity: 1;
     }
+  }
 
-    &__svg {
-        stroke: var(--details-color);
-        stroke-width: 2px;
-        fill: none;
-        transition: all 1s;
-    }
+  &__icon:hover > &__svg {
+    fill: var(--details-color);
+  }
 
-    &--isFave {
-        fill: var(--details-color);
-        transition: all 1s;
-    }
-
-    &__faveText {
-        display: none;
-    }
-
-    &__nonFaveText {
-        display: block;
-    }
-
-    &__text {
-        height: 0;
-        opacity: 0;
-        overflow: hidden;
-        transition: all .5s;
-
-        &--visible {
-            height: auto;
-            opacity: 1;
-        }
-    }
-
-    &__icon:hover > &__svg {
-        fill: var(--details-color);
-    }
-
-    &__icon:hover > &--isFave {
-        fill: none;
-    }
-
+  &__icon:hover > &--isFave {
+    fill: none;
+  }
 }
-
 
 // Add specific properties (i.e. colour) for the ingredients
 .ingredients {
-    --ing-color: var(--color-spot-2);
+  --ing-color: var(--color-spot-2);
 
-    &::after {
-        border-color: var(--ing-color);
-    }
+  &::after {
+    border-color: var(--ing-color);
+  }
 
-    & > .heading--subhead {
-        color: var(--ing-color);
-    }
+  & > .heading--subhead {
+    color: var(--ing-color);
+  }
 
-    &__list {
-        list-style: none;
-        margin-bottom: 2rem;
+  &__list {
+    list-style: none;
+    margin-bottom: 2rem;
 
-        & > li {
-            margin-bottom: .75rem;
-        }
+    & > li {
+      margin-bottom: 0.75rem;
     }
+  }
 
-    &__icon {
-        border-color: var(--ing-color);
-        cursor: pointer;
-    }
+  &__icon {
+    border-color: var(--ing-color);
+    cursor: pointer;
+  }
 
-    &__text {
-        visibility: none;
-        opacity: 0;
-        transition: all .5s;
-    }
-    
-    &__icon:hover + &__text {
-        visibility: visible;
-        opacity: 1;
-    }
+  &__text {
+    visibility: none;
+    opacity: 0;
+    transition: all 0.5s;
+  }
 
-    &__svg {
-        fill: var(--ing-color);
-    }
+  &__icon:hover + &__text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__svg {
+    fill: var(--ing-color);
+  }
 }
 
+.recipe-summary {
+  grid-column: col-start 6 / content-end;
+  font-family: $font-display;
+}
 
 .method {
-    grid-column: col-start 6 / content-end;
+  grid-column: col-start 6 / content-end;
 
-    margin: 5rem 0;
+  margin: 5rem 0;
 
-    // Use CSS counters to count method steps and the before pseudoelement to style the number
-    &__steps {
-        list-style: none;
+  // Use CSS counters to count method steps and the before pseudoelement to style the number
+  &__steps {
+    list-style: none;
 
-        & > li {
-            position: relative;
-            counter-increment: step-counter;
-            margin-left: 2.5rem; // Margin between list itself and edge - i.e. space for ::before element (number)
-            margin-bottom: 2rem; // Space between list items
-            padding-left: .5rem; // Space between number and list item
-            font-size: 1.7rem;
-            
+    & > li {
+      position: relative;
+      counter-increment: step-counter;
+      margin-left: 2.5rem; // Margin between list itself and edge - i.e. space for ::before element (number)
+      margin-bottom: 2rem; // Space between list items
+      padding-left: 0.5rem; // Space between number and list item
+      font-size: 1.7rem;
 
-            &::before {
-                position: absolute;
-                left: -2.5rem; // Place numbers at edge of list
-                top: -.1rem;
-                
-                content: counter(step-counter);
-                font-family: $font-body;
-                font-size: 1.75rem;
-                color: $color-black;
-                font-weight: 600;
-            }
-        }
+      &::before {
+        position: absolute;
+        left: -2.5rem; // Place numbers at edge of list
+        top: -0.1rem;
+
+        content: counter(step-counter);
+        font-family: $font-body;
+        font-size: 1.75rem;
+        color: $color-black;
+        font-weight: 600;
+      }
     }
+  }
 }

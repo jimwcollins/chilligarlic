@@ -44,12 +44,12 @@ export default class Recipe {
       this.title = recipe.title;
       this.author = recipe.sourceName;
       this.imageUrl = recipe.image;
+      this.time = recipe.readyInMinutes;
+      this.servings = recipe.servings;
       this.ingredients = this.parseIngredients(recipe.extendedIngredients);
       this.instructions = this.parseInstructions(
         recipe.analyzedInstructions[0].steps
       );
-      this.time = recipe.readyInMinutes;
-      this.servings = recipe.servings;
     } catch (error) {
       alert(error);
       console.log(error);
