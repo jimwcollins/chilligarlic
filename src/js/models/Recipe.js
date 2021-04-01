@@ -52,16 +52,38 @@ export default class Recipe {
       this.servings = recipe.servings;
     } catch (error) {
       alert(error);
+      console.log(error);
     }
   } // End getResults method
 
   // Extract what we need from the ingredients
   parseIngredients(ingredients) {
     return ingredients.map((ingredient) => ({
-      quantity: ingredient.measures.metric.amount,
-      unit: ingredient.measures.metric.unitShort,
-      ingredient: ingredient.nameClean,
+      quantity: this.parseAmount(
+        ingredient.measures.metric.amount,
+        ingredient.measures.metric.unitShort.toLowerCase()
+      ),
+      unit: this.parseUnit(ingredient.measures.metric.unitShort.toLowerCase()),
+      ingredient: ingredient.name,
     }));
+  }
+
+  parseAmount(amountToParse, unitToParse) {
+    if (unitToParse === 'g' || unitToParse === 'ml')
+      return Math.round(amountToParse);
+    else return Math.round((amountToParse + Number.EPSILON) * 100) / 100;
+  }
+
+  parseUnit(unitToParse) {
+    const unitsToChange = ['kilogram', 'tbsps', 'tsps'];
+    const unitsClean = ['kg', 'tbsp', 'tsp'];
+
+    const indexToChange = unitsToChange.findIndex(
+      (unit) => unit === unitToParse
+    );
+
+    if (indexToChange !== -1) return unitsClean[indexToChange];
+    else return unitToParse;
   }
 
   parseInstructions(instructions) {

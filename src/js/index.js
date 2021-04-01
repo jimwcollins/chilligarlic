@@ -145,15 +145,12 @@ const ctrlRecipe = async () => {
       // 3. Retrieve recipe details
       await state.recipe.getRecipe();
 
-      // 5. Parse ingredients
-      // state.recipe.parseIngredients();
-
-      // 6. Is it a fave? If so, set flag
+      // 4. Is it a fave? If so, set flag
       if (state.faves.isFave(recipeID)) {
         state.recipe.isFave = true;
       }
 
-      // 8. Render to UI
+      // 5. Render to UI
       recipeView.renderRecipe(state.recipe);
     } catch (error) {
       alert('Error retrieving recipe');
