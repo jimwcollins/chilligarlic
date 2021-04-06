@@ -384,3 +384,47 @@ document
       shopListView.clear();
     }
   });
+
+/*******************
+ * Header JS
+ *******************/
+
+// Sticky nav
+const header = document.querySelector('.header');
+const heroSection = document.querySelector('.hero');
+
+// Change theme of header when we near end of hero
+const stickyNav = ([entry]) => {
+  if (entry.isIntersecting) {
+    header.setAttribute('data-theme', 'header-home');
+  } else {
+    header.setAttribute('data-theme', 'header-main');
+  }
+};
+
+const heroObserver = new IntersectionObserver(stickyNav, {
+  threshold: 0.12,
+});
+
+heroObserver.observe(heroSection);
+
+// Search
+const heroSearch = document.querySelector('.hero__search');
+const headerSearch = document.querySelector('.header__search__form');
+
+// Hide main search and show header search when hero passes 95% threshold
+const handleSearch = ([entry]) => {
+  if (entry.isIntersecting) {
+    heroSearch.classList.remove('hero__search--hidden');
+    headerSearch.classList.add('header__search__form--hidden');
+  } else {
+    heroSearch.classList.add('hero__search--hidden');
+    headerSearch.classList.remove('header__search__form--hidden');
+  }
+};
+
+const searchObserver = new IntersectionObserver(handleSearch, {
+  threshold: 0.95,
+});
+
+searchObserver.observe(heroSection);
