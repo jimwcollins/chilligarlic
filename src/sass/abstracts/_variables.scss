@@ -13,15 +13,15 @@ $color-primary: #762627;
 $color-secondary: #3f7c7e;
 
 $color-spot-1: #d85730;
-$color-spot-2: #E0A55C;
+$color-spot-2: #e0a55c;
 
-$color-greygreen: #9AA6A4;
+$color-greygreen: #9aa6a4;
 
 $color-grey-light-1: #faf9f9;
 $color-grey-light-2: #f4f2f2;
 $color-grey-light-3: #f0eeee;
 
-$color-white: #FFF;
+$color-white: #fff;
 $color-black: #000;
 
 // Fonts
@@ -30,48 +30,48 @@ $font-display: 'Josefin Slab', serif;
 $font-body: 'Lato', sans-serif;
 $font-body-size: 1.6rem;
 
-
 /*-------------------------*/
 /*----    Header     ------*/
 /*-------------------------*/
 
+$header-height: 12rem;
+
 // Menus
 
 $icon-border-width: 1.5px;
-$menu-transition: .5s;
+$menu-transition: 0.5s;
 
-$menu-hover-color: rgba($color-spot-1, .2);
-
+$menu-hover-color: rgba($color-spot-1, 0.2);
 
 // Header Themes
 
 :root {
-    --color-primary: #762627;
-    --color-secondary: #3f7c7e;
+  --color-primary: #762627;
+  --color-secondary: #3f7c7e;
 
-    --color-spot-1: #d85730;
-    --color-spot-2: #E0A55C;
+  --color-spot-1: #d85730;
+  --color-spot-2: #e0a55c;
 
-    --color-white: #FFF;
-    --color-black: #000;
+  --color-white: #fff;
+  --color-black: #000;
 }
 
-[data-theme="header-home"] {
-    --header-background: none;
+[data-theme='header-home'] {
+  --header-background: transparent;
 
-    --menu-icon-circle: var(--color-white);
-    --menu-icon-svg: var(--color-white);
-    --menu-hover-outline: var(--color-primary);
-    --menu-hover-fill: none;
-    --menu-hover-svg: var(--color-white);
+  --menu-icon-circle: var(--color-white);
+  --menu-icon-svg: var(--color-white);
+  --menu-hover-outline: var(--color-primary);
+  --menu-hover-fill: none;
+  --menu-hover-svg: var(--color-white);
 }
 
-[data-theme="header-main"] {
-    --header-background: var(--color-primary);
+[data-theme='header-main'] {
+  --header-background: var(--color-white);
 
-    --menu-icon-circle: var(--color-black);
-    --menu-icon-svg: var(--color-black);
-    --menu-hover-outline: var(--color-primary);
-    --menu-hover-fill: var(--color-white);
-    --menu-hover-svg: var(--color-black);
+  --menu-icon-circle: var(--color-black);
+  --menu-icon-svg: var(--color-black);
+  --menu-hover-outline: var(--color-primary);
+  --menu-hover-fill: var(--color-white);
+  --menu-hover-svg: var(--color-black);
 }

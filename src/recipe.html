@@ -21,7 +21,7 @@
   </head>
 
   <!-- Body -->
-  <body class="recipe grid">
+  <body>
     <!-- Header -->
     <header class="header grid" data-theme="header-main">
       <!-- Search -->
@@ -171,115 +171,120 @@
     </header>
 
     <!-- Recipe -->
-
-    <div class="recipe-heading">
-      <h1 class="heading--main recipe-heading__title" id="recipe__title"></h1>
-      <h2 class="recipe-heading__author" id="recipe__author"></h2>
-    </div>
-
-    <!-- Recipe hero image -->
-    <div class="image__hero"></div>
-
-    <!-- Recipe sidebar -->
-    <section class="recipe-info">
-      <!-- Recipe details -->
-      <div class="recipe-info__box recipe-details">
-        <h3 class="heading--subhead">Let's plan!</h3>
-
-        <!-- Recipe time -->
-        <div class="recipe-info__item">
-          <figure class="recipe-info__item__icon recipe-details__icon">
-            <svg class="recipe-info__item__svg recipe-details__svg">
-              <use
-                xlink:href="img/Chilli_Icons_Sprite.svg#icon-clockhands"
-              ></use>
-            </svg>
-          </figure>
-          <p class="recipe-info__item__text" id="recipe__time"></p>
-        </div>
-
-        <!-- Recipe Servings -->
-        <div class="recipe-info__item">
-          <figure class="recipe-info__item__icon--user recipe-details__icon">
-            <svg class="recipe-info__item__svg--user recipe-details__svg">
-              <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-user"></use>
-            </svg>
-          </figure>
-          <p class="recipe-info__item__text" id="recipe__servings"></p>
-          <div class="recipe-details__servings">
-            <svg class="recipe-details__servings__svg btn-serveDec">
-              <use
-                xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-minus"
-              ></use>
-            </svg>
-            <svg class="recipe-details__servings__svg btn-serveInc">
-              <use
-                xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-plus"
-              ></use>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Recipe Fave button -->
-        <div class="recipe-info__item faves">
-          <figure class="recipe-info__item__icon faves__icon">
-            <svg class="recipe-info__item__svg faves__svg">
-              <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-heart"></use>
-            </svg>
-          </figure>
-          <div class="faves__nonFaveText">
-            <p class="recipe-info__item__text faves__text faves__text--visible">
-              Love it?
-            </p>
-            <p class="recipe-info__item__text faves__text">
-              Add it to your favourites!
-            </p>
-          </div>
-          <div class="faves__faveText">
-            <p class="recipe-info__item__text faves__text faves__text--visible">
-              It's your favourite!
-            </p>
-            <p class="recipe-info__item__text faves__text">
-              Remove from favourites
-            </p>
-          </div>
-        </div>
+    <main class="recipe grid">
+      <div class="recipe-heading">
+        <h1 class="heading--main recipe-heading__title" id="recipe__title"></h1>
+        <h2 class="recipe-heading__author" id="recipe__author"></h2>
       </div>
 
-      <!-- Recipe Ingredients -->
-      <div class="recipe-info__box ingredients">
-        <h3 class="heading--subhead">Let's shop!</h3>
+      <!-- Recipe hero image -->
+      <div class="image__hero"></div>
 
-        <ul class="ingredients__list" id="ingredients">
-          <!--
-            <li>1 clove of garlic</li>
-          -->
-        </ul>
+      <!-- Recipe sidebar -->
+      <section class="recipe-info">
+        <!-- Recipe details -->
+        <div class="recipe-info__box recipe-details">
+          <h3 class="heading--subhead">Let's plan!</h3>
 
-        <div class="recipe-info__item">
-          <figure class="recipe-info__item__icon ingredients__icon">
-            <svg class="recipe-info__item__svg ingredients__svg">
-              <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-list2"></use>
-            </svg>
-          </figure>
-          <p class="recipe-info__item__text ingredients__text">
-            Add to shopping list
-          </p>
+          <!-- Recipe time -->
+          <div class="recipe-info__item">
+            <figure class="recipe-info__item__icon recipe-details__icon">
+              <svg class="recipe-info__item__svg recipe-details__svg">
+                <use
+                  xlink:href="img/Chilli_Icons_Sprite.svg#icon-clockhands"
+                ></use>
+              </svg>
+            </figure>
+            <p class="recipe-info__item__text" id="recipe__time"></p>
+          </div>
+
+          <!-- Recipe Servings -->
+          <div class="recipe-info__item">
+            <figure class="recipe-info__item__icon--user recipe-details__icon">
+              <svg class="recipe-info__item__svg--user recipe-details__svg">
+                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-user"></use>
+              </svg>
+            </figure>
+            <p class="recipe-info__item__text" id="recipe__servings"></p>
+            <div class="recipe-details__servings">
+              <svg class="recipe-details__servings__svg btn-serveDec">
+                <use
+                  xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-minus"
+                ></use>
+              </svg>
+              <svg class="recipe-details__servings__svg btn-serveInc">
+                <use
+                  xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-plus"
+                ></use>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Recipe Fave button -->
+          <div class="recipe-info__item faves">
+            <figure class="recipe-info__item__icon faves__icon">
+              <svg class="recipe-info__item__svg faves__svg">
+                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-heart"></use>
+              </svg>
+            </figure>
+            <div class="faves__nonFaveText">
+              <p
+                class="recipe-info__item__text faves__text faves__text--visible"
+              >
+                Love it?
+              </p>
+              <p class="recipe-info__item__text faves__text">
+                Add it to your favourites!
+              </p>
+            </div>
+            <div class="faves__faveText">
+              <p
+                class="recipe-info__item__text faves__text faves__text--visible"
+              >
+                It's your favourite!
+              </p>
+              <p class="recipe-info__item__text faves__text">
+                Remove from favourites
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section class="summary">
-      <p class="recipe-summary"></p>
-    </section>
+        <!-- Recipe Ingredients -->
+        <div class="recipe-info__box ingredients">
+          <h3 class="heading--subhead">Let's shop!</h3>
 
-    <section class="method">
-      <h3 class="heading--subhead">Let's cook!</h3>
+          <ul class="ingredients__list" id="ingredients">
+            <!--
+              <li>1 clove of garlic</li>
+            -->
+          </ul>
 
-      <ol class="method__steps">
-        <!-- <li>Peel and finely slice the garlic.</li> -->
-      </ol>
-    </section>
+          <div class="recipe-info__item">
+            <figure class="recipe-info__item__icon ingredients__icon">
+              <svg class="recipe-info__item__svg ingredients__svg">
+                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-list2"></use>
+              </svg>
+            </figure>
+            <p class="recipe-info__item__text ingredients__text">
+              Add to shopping list
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary">
+        <p class="recipe-summary"></p>
+      </section>
+
+      <section class="method">
+        <h3 class="heading--subhead">Let's cook!</h3>
+
+        <ol class="method__steps">
+          <!-- <li>Peel and finely slice the garlic.</li> -->
+        </ol>
+      </section>
+    </main>
 
     <footer class="footer">
       <ul class="footer__nav">

@@ -6,7 +6,8 @@
 .recipe {
   grid-column: full-start / full-end;
 
-  // grid-template-rows: repeat(2, min-content) 55rem repeat(2, min-content);
+  margin-top: $header-height;
+  padding-top: 5rem;
 }
 
 .recipe-heading {
