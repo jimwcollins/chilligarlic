@@ -13,6 +13,7 @@ module.exports = {
   entry: {
     main: './src/js/index.js',
     header: './src/js/components/header.js',
+    footer: './src/js/components/footer.js',
   },
   // NODE_ENV is provided to us by cross-env package.
   mode: process.env.NODE_ENV,
