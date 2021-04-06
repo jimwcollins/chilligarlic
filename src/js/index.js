@@ -23,9 +23,14 @@ import * as favesView from './views/favesView';
 import ShopList from './models/ShopList';
 import * as shopListView from './views/shopListView';
 
+// Components
+import Header from './components/header';
+
 /**************
  * Initial code
  **************/
+
+console.log('Index.js');
 
 // Global state of the app
 // includes Search object, current Recipe object, shopping list object, liked recipes
@@ -384,70 +389,3 @@ document
       shopListView.clear();
     }
   });
-
-/*******************
- * Header JS
- *******************/
-
-// Header
-const header = document.querySelector('.header');
-
-// Handle header for home page
-const heroSection = document.querySelector('.hero');
-
-if (heroSection) {
-  // Change theme of header when we near end of hero
-  const handleHeader = ([entry]) => {
-    if (entry.isIntersecting) {
-      header.setAttribute('data-theme', 'header-home');
-      header.classList.remove('header--scroll');
-    } else {
-      header.setAttribute('data-theme', 'header-main');
-      header.classList.add('header--scroll');
-    }
-  };
-
-  const headerObserverHome = new IntersectionObserver(handleHeader, {
-    threshold: 0.12,
-  });
-
-  console.log('hero section', heroSection);
-  headerObserverHome.observe(heroSection);
-}
-
-// Handle header for recipe and search pages
-const heading = document.querySelector('.heading');
-
-if (heading) {
-  const handleHeaderMain = ([entry]) => {
-    if (!entry.isIntersecting) header.classList.add('header--scroll');
-    else header.classList.remove('header--scroll');
-  };
-
-  const headerObserverMain = new IntersectionObserver(handleHeaderMain, {
-    threshold: 1,
-  });
-
-  headerObserverMain.observe(heading);
-}
-
-// Search
-const heroSearch = document.querySelector('.hero__search');
-const headerSearch = document.querySelector('.header__search__form');
-
-// Hide main search and show header search when hero passes 95% threshold
-const handleSearch = ([entry]) => {
-  if (entry.isIntersecting) {
-    heroSearch.classList.remove('hero__search--hidden');
-    headerSearch.classList.add('header__search__form--hidden');
-  } else {
-    heroSearch.classList.add('hero__search--hidden');
-    headerSearch.classList.remove('header__search__form--hidden');
-  }
-};
-
-const searchObserver = new IntersectionObserver(handleSearch, {
-  threshold: 0.95,
-});
-
-searchObserver.observe(heroSection);
