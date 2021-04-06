@@ -389,24 +389,47 @@ document
  * Header JS
  *******************/
 
-// Sticky nav
+// Header
 const header = document.querySelector('.header');
+
+// Handle header for home page
 const heroSection = document.querySelector('.hero');
 
-// Change theme of header when we near end of hero
-const stickyNav = ([entry]) => {
-  if (entry.isIntersecting) {
-    header.setAttribute('data-theme', 'header-home');
-  } else {
-    header.setAttribute('data-theme', 'header-main');
-  }
-};
+if (heroSection) {
+  // Change theme of header when we near end of hero
+  const handleHeader = ([entry]) => {
+    if (entry.isIntersecting) {
+      header.setAttribute('data-theme', 'header-home');
+      header.classList.remove('header--scroll');
+    } else {
+      header.setAttribute('data-theme', 'header-main');
+      header.classList.add('header--scroll');
+    }
+  };
 
-const heroObserver = new IntersectionObserver(stickyNav, {
-  threshold: 0.12,
-});
+  const headerObserverHome = new IntersectionObserver(handleHeader, {
+    threshold: 0.12,
+  });
 
-heroObserver.observe(heroSection);
+  console.log('hero section', heroSection);
+  headerObserverHome.observe(heroSection);
+}
+
+// Handle header for recipe and search pages
+const heading = document.querySelector('.heading');
+
+if (heading) {
+  const handleHeaderMain = ([entry]) => {
+    if (!entry.isIntersecting) header.classList.add('header--scroll');
+    else header.classList.remove('header--scroll');
+  };
+
+  const headerObserverMain = new IntersectionObserver(handleHeaderMain, {
+    threshold: 1,
+  });
+
+  headerObserverMain.observe(heading);
+}
 
 // Search
 const heroSearch = document.querySelector('.hero__search');

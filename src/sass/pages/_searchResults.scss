@@ -20,12 +20,6 @@
     [content-end] minmax(6rem, 1fr) [full-end];
   column-gap: $search-column-gap;
 
-  &__header {
-    grid-column: content-start / content-end;
-
-    margin-bottom: 3rem;
-  }
-
   &__grid {
     // Position
     grid-column: content-start / content-end;
@@ -68,6 +62,10 @@
     font-size: 1.5rem;
     text-align: center;
   }
+}
+
+.search-heading {
+  margin-bottom: 3rem;
 }
 
 .page-controls {

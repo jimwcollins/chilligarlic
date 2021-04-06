@@ -205,7 +205,8 @@
     &__img {
       vertical-align: middle;
       height: 10rem;
-      width: 10rem;
+
+      transition: all 1s;
     }
   }
 
@@ -216,6 +217,14 @@
     display: grid;
     grid-template-columns: repeat(2, min-content);
     gap: 4rem;
+  }
+
+  &--scroll {
+    height: 9rem;
+
+    & img {
+      height: 7.5rem;
+    }
   }
 }
 
