@@ -61,9 +61,15 @@ export default class ShopList {
   }
 
   removeItem(id) {
+    // Delete item from shopping list
     const indexToDel = this.list.findIndex((item) => item.id === id);
+    const item = this.list.find((item) => item.id === id);
     this.list.splice(indexToDel, 1);
     this.persistList();
+
+    // Return boolean indicating if this is last item on list for current recipe
+    if (state.recipe && state.recipe.id === item.recipeID)
+      return !this.ingsAdded(state.recipe.id);
   }
 
   clear() {
