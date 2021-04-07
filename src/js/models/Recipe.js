@@ -21,7 +21,7 @@
 *               quantity
 *               units
 *               ingredient                
-*       recipeUrl: original recipe source
+*       ingsAdded: boolean, ingredients added to list?
 *       servings
 *       time
 *
@@ -47,6 +47,7 @@ export default class Recipe {
       this.time = recipe.readyInMinutes;
       this.servings = recipe.servings;
       this.ingredients = this.parseIngredients(recipe.extendedIngredients);
+      this.ingsAdded = false;
       this.instructions = this.parseInstructions(
         recipe.analyzedInstructions[0].steps
       );

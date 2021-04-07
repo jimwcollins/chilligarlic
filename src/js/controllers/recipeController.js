@@ -15,23 +15,20 @@ export const ctrlRecipe = async () => {
   // 0. Add recipe event listeners
   ctrlAddRecipeListeners();
 
-  // 1. Get params and set recipe ID and return status
+  // Get params and set recipe ID and return status
   const { recipeID } = recipeView.getRecipeParams();
 
   if (recipeID) {
-    // 2. Construct recipe object
     state.recipe = new Recipe(recipeID);
 
     try {
-      // 3. Retrieve recipe details
       await state.recipe.getRecipe();
 
-      // 4. Is it a fave? If so, set flag
-      if (state.faves.isFave(recipeID)) {
-        state.recipe.isFave = true;
-      }
+      // Determine if recipe is a fave or added to shopping list
+      if (state.faves.isFave(recipeID)) state.recipe.isFave = true;
+      if (state.shopList.ingsAdded(recipeID)) state.recipe.ingsAdded = true;
 
-      // 5. Render to UI
+      // Render to UI
       recipeView.renderRecipe(state.recipe);
     } catch (error) {
       alert('Error retrieving recipe');
@@ -66,52 +63,63 @@ const ctrlAddRecipeListeners = () => {
           state.recipe.servings,
           state.recipe.ingredients
         );
-      } else if (event.target.closest(domStrings.recipeFaves)) {
+      } else if (event.target.closest(domStrings.recipeFavesIcon)) {
         // They have clicked the favourite button
         ctrlFaves();
-      } else if (event.target.closest(domStrings.recipeShopList)) {
+      } else if (event.target.closest(domStrings.ingredientsIcon)) {
         // They have clicked 'Add to Shopping List' button
         ctrlShopList();
       }
     });
 
   // Handle hovers on fave icon - display hover text
-  document
-    .querySelector(domStrings.recipeFaves)
-    .addEventListener('mouseenter', (event) => {
-      document
-        .querySelectorAll('.faves__text')
-        .forEach((el) => el.classList.toggle('faves__text--visible'));
-      document
-        .querySelector(domStrings.recipeServingControl)
-        .classList.toggle('recipe-details__servings--active');
-    });
+  const recipeFavesIcon = document.querySelector(domStrings.recipeFavesIcon);
+  const allFaveText = document.querySelectorAll(domStrings.recipeFavesText);
+  const servingControl = document.querySelector(
+    domStrings.recipeServingControl
+  );
 
-  document
-    .querySelector(domStrings.recipeFaves)
-    .addEventListener('mouseleave', (event) => {
-      document
-        .querySelectorAll('.faves__text')
-        .forEach((el) => el.classList.toggle('faves__text--visible'));
-      document
-        .querySelector(domStrings.recipeServingControl)
-        .classList.toggle('recipe-details__servings--active');
-    });
+  recipeFavesIcon.addEventListener('mouseenter', (event) => {
+    allFaveText.forEach((el) => el.classList.toggle('faves__text--visible'));
+    servingControl.classList.toggle('recipe-details__servings--active');
+  });
+
+  recipeFavesIcon.addEventListener('mouseleave', (event) => {
+    allFaveText.forEach((el) => el.classList.toggle('faves__text--visible'));
+    servingControl.classList.toggle('recipe-details__servings--active');
+  });
 
   // Handle hovers in document info box - display servings controls
-  document
-    .querySelector(domStrings.recipeDetails)
-    .addEventListener('mouseenter', (event) => {
-      document
-        .querySelector(domStrings.recipeServingControl)
-        .classList.toggle('recipe-details__servings--active');
-    });
+  const recipeDetails = document.querySelector(domStrings.recipeDetails);
 
-  document
-    .querySelector(domStrings.recipeDetails)
-    .addEventListener('mouseleave', (event) => {
-      document
-        .querySelector(domStrings.recipeServingControl)
-        .classList.toggle('recipe-details__servings--active');
-    });
+  recipeDetails.addEventListener('mouseenter', (event) => {
+    servingControl.classList.toggle('recipe-details__servings--active');
+  });
+
+  recipeDetails.addEventListener('mouseleave', (event) => {
+    servingControl.classList.toggle('recipe-details__servings--active');
+  });
+
+  // Handle hovers on addToList icon
+  const ingredientsIcon = document.querySelector(domStrings.ingredientsIcon);
+  const ingredientsSvg = document.querySelector(domStrings.ingredientsSvg);
+  const allListText = document.querySelectorAll(domStrings.ingredientsListText);
+
+  ingredientsIcon.addEventListener('mouseenter', (event) => {
+    ingredientsIcon.classList.add('ingredients__icon--isOnList');
+    ingredientsSvg.classList.add('ingredients__svg--isOnList');
+    allListText.forEach((el) =>
+      el.classList.toggle('ingredients__listText--visible')
+    );
+  });
+
+  ingredientsIcon.addEventListener('mouseleave', (event) => {
+    if (!state.recipe.ingsAdded) {
+      ingredientsIcon.classList.remove('ingredients__icon--isOnList');
+      ingredientsSvg.classList.remove('ingredients__svg--isOnList');
+    }
+    allListText.forEach((el) =>
+      el.classList.toggle('ingredients__listText--visible')
+    );
+  });
 };

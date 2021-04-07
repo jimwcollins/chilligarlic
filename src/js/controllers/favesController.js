@@ -47,7 +47,7 @@ export const ctrlFaves = () => {
     state.recipe.isFave = true;
     favesView.renderFave(newFave);
     recipeView.renderFaveStatus(true); // Set the faveIcon
-  } else if (state.recipe.isFave) {
+  } else {
     // Remove the fave from the state and menu, then set the current recipe fave flag to false
     delFave(state.recipe.id);
     state.recipe.isFave = false;

@@ -39,6 +39,8 @@ export const getReturn = () => {
 };
 
 export const renderRecipe = (recipe) => {
+  console.log('Rendering recipe,', recipe);
+
   if (recipe.returnStatus)
     document.querySelector(domStrings.headerBack).style.display = 'flex';
 
@@ -61,6 +63,7 @@ export const renderRecipe = (recipe) => {
   renderServings(recipe.servings);
   renderFaveStatus(recipe.isFave);
   renderIngredients(recipe.ingredients);
+  renderListStatus(recipe.ingsAdded);
   renderInstructions(recipe.instructions);
 };
 
@@ -120,5 +123,33 @@ export const renderFaveStatus = (isFave) => {
     // Display the non-fave text and hide the fave text
     faveText.style.display = 'none';
     nonFaveText.style.display = 'block';
+  }
+};
+
+// Set the list icon and text according to added to list status
+export const renderListStatus = (ingsAdded) => {
+  // First target the fave elements in the DOM
+  const listIcon = document.querySelector(domStrings.ingredientsIcon);
+  const listSvg = document.querySelector(domStrings.ingredientsSvg);
+  const nonListText = document.querySelector(
+    '.ingredients__nonListTextContainer'
+  );
+  const listText = document.querySelector('.ingredients__listTextContainer');
+
+  if (ingsAdded) {
+    // This has been added to list so display the isOnList SVG
+    listIcon.classList.add('ingredients__icon--isOnList');
+    listSvg.classList.add('ingredients__svg--isOnList');
+
+    // Display the favourite text and hide the non-fave text
+    listText.style.display = 'block';
+    nonListText.style.display = 'none';
+  } else {
+    listIcon.classList.remove('ingredients__icon--isOnList');
+    listSvg.classList.remove('ingredients__svg--isOnList');
+
+    // Display the non-fave text and hide the fave text
+    listText.style.display = 'none';
+    nonListText.style.display = 'block';
   }
 };

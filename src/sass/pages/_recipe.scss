@@ -231,22 +231,42 @@
 
   &__icon {
     border-color: var(--ing-color);
+    background-color: none;
     cursor: pointer;
-  }
-
-  &__text {
-    visibility: none;
-    opacity: 0;
     transition: all 0.5s;
-  }
 
-  &__icon:hover + &__text {
-    visibility: visible;
-    opacity: 1;
+    &--isOnList {
+      background-color: var(--ing-color);
+    }
   }
 
   &__svg {
     fill: var(--ing-color);
+    transition: all 0.5s;
+
+    &--isOnList {
+      fill: $color-white;
+    }
+  }
+
+  &__listTextContainer {
+    display: none;
+  }
+
+  &__nonListTextContainer {
+    display: block;
+  }
+
+  &__listText {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+
+    &--visible {
+      height: auto;
+      opacity: 1;
+    }
   }
 }
 

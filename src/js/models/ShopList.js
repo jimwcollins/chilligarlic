@@ -20,6 +20,7 @@
  *               quantity
  *               unit
  *               ing
+ *               recipeId
  *
  ****************************/
 
@@ -32,12 +33,13 @@ export default class ShopList {
   }
 
   // Add an ingredient to the shopping list
-  addItem(quantity, unit, ingredient) {
+  addItem(quantity, unit, ingredient, recipeID) {
     const item = {
       id: uniqid(),
       quantity,
       unit,
       ingredient,
+      recipeID,
     };
 
     this.list.push(item);
@@ -70,5 +72,10 @@ export default class ShopList {
     if (arrLocalList && arrLocalList.length > 0) {
       this.list = arrLocalList;
     }
+  }
+
+  // Determines if this recipe's ingredients are on shopping list
+  ingsAdded(recipeID) {
+    return this.list.some((listItem) => listItem.recipeID === recipeID);
   }
 }

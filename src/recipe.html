@@ -108,11 +108,7 @@
         <div class="recipe-info__box ingredients">
           <h3 class="heading--subhead">Let's shop!</h3>
 
-          <ul class="ingredients__list" id="ingredients">
-            <!--
-              <li>1 clove of garlic</li>
-            -->
-          </ul>
+          <ul class="ingredients__list" id="ingredients"></ul>
 
           <div class="recipe-info__item">
             <figure class="recipe-info__item__icon ingredients__icon">
@@ -120,9 +116,26 @@
                 <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-list2"></use>
               </svg>
             </figure>
-            <p class="recipe-info__item__text ingredients__text">
-              Add to shopping list
-            </p>
+            <div class="ingredients__nonListTextContainer">
+              <p
+                class="recipe-info__item__text ingredients__listText ingredients__listText--visible"
+              >
+                Add to list?
+              </p>
+              <p class="recipe-info__item__text ingredients__listText">
+                Add to shopping list
+              </p>
+            </div>
+            <div class="ingredients__listTextContainer">
+              <p
+                class="recipe-info__item__text ingredients__listText ingredients__listText--visible"
+              >
+                Added to shopping list
+              </p>
+              <p class="recipe-info__item__text ingredients__listText">
+                Remove from shopping list
+              </p>
+            </div>
           </div>
         </div>
       </section>

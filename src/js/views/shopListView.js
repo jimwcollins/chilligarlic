@@ -1,26 +1,24 @@
 /***************************
-* 
-* CHILLI+GARLIC
-* VIEW: shopListView.js
-* 
-***************************/
-
-/***********
-* Imports
-***********/
+ *
+ * CHILLI+GARLIC
+ * VIEW: shopListView.js
+ *
+ ***************************/
 
 import { domStrings } from './base';
 
-/***********
-* Functions
-***********/
+export const renderList = (list) => {
+  // Grab the list in the DOM
+  const shopList = document.getElementById(domStrings.shopList__list);
 
-export const renderItem = item => {
-    // Grab the list in the DOM
-    const shopList = document.getElementById(domStrings.shopList__list);
-    
-    // Set up our HTML
-    const html = `
+  list.forEach((item) => {
+    renderItem(shopList, item);
+  });
+};
+
+const renderItem = (shopList, item) => {
+  // Set up our HTML
+  const html = /* html */ `
         <li class="menu__dropdown__item shoplist__item" data-item_id=${item.id}>
             <p class="shoplist__text shoplist__quantity">${item.quantity}${item.unit}</p>
             <p class="shoplist__text shoplist__ingredient">${item.ingredient}</p>
@@ -28,25 +26,29 @@ export const renderItem = item => {
                 <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"></use>
             </svg>
         </li>
-    `
-    shopList.insertAdjacentHTML('beforeend', html);
-}
+    `;
+  shopList.insertAdjacentHTML('beforeend', html);
+};
 
-export const removeItem = item => {
-    item.parentElement.removeChild(item);
-}
+export const removeItem = (item) => {
+  item.parentElement.removeChild(item);
+};
 
 export const removePlaceholder = () => {
-    if (document.getElementById(domStrings.shopList__placeholder).style.display !== 'none') {
-        document.getElementById(domStrings.shopList__placeholder).style.display = 'none';
-    }
-}
+  if (
+    document.getElementById(domStrings.shopList__placeholder).style.display !==
+    'none'
+  ) {
+    document.getElementById(domStrings.shopList__placeholder).style.display =
+      'none';
+  }
+};
 
 export const addPlaceholder = () => {
-    document.getElementById(domStrings.shopList__placeholder).style.display = '';
-}
+  document.getElementById(domStrings.shopList__placeholder).style.display = '';
+};
 
 export const clear = () => {
-    document.getElementById(domStrings.shopList__list).innerHTML = '';
-    addPlaceholder();
-}
+  document.getElementById(domStrings.shopList__list).innerHTML = '';
+  addPlaceholder();
+};

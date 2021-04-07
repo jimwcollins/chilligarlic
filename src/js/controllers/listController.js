@@ -8,6 +8,7 @@
 import { domStrings } from '../views/base';
 import ShopList from '../models/ShopList';
 import * as shopListView from '../views/shopListView';
+import * as recipeView from '../views/recipeView';
 
 // Initialise shopping list
 export const initShopList = () => {
@@ -19,28 +20,33 @@ export const initShopList = () => {
   // Now render the list to the UI if it isn't empty
   if (state.shopList.list.length > 0) {
     shopListView.removePlaceholder();
-    state.shopList.list.forEach((item) => shopListView.renderItem(item));
+    shopListView.renderList(state.shopList.list);
   }
 };
 
 // Handle the 'Add to Shopping List' button
 export const ctrlShopList = () => {
-  // 1. Add the current recipe's ingredients to the shopping list
-  state.recipe.ingredients.forEach((ingredient) => {
-    state.shopList.addItem(
-      ingredient.quantity,
-      ingredient.unit,
-      ingredient.ingredient
-    );
-  });
+  // If the current recipe's ingredients are not already on list then add them, otherwise remove them
+  if (!state.recipe.ingsAdded) {
+    // 1. Add the current recipe's ingredients to the shopping list
+    state.recipe.ingredients.forEach((ingredient) => {
+      state.shopList.addItem(
+        ingredient.quantity,
+        ingredient.unit,
+        ingredient.ingredient,
+        state.recipe.id
+      );
+    });
 
-  // 2. Update the UI
-  // If the placeholder is in place, remove it
-  shopListView.removePlaceholder();
-
-  state.shopList.list.forEach((item) => {
-    shopListView.renderItem(item);
-  });
+    // Set state, remove placeholder and render ingredients to list
+    state.recipe.ingsAdded = true;
+    recipeView.renderListStatus(true);
+    shopListView.removePlaceholder();
+    shopListView.renderList(state.shopList.list);
+  } else {
+    state.recipe.ingsAdded = false;
+    recipeView.renderListStatus(false);
+  }
 };
 
 // Listener for shopping list

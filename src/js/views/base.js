@@ -1,7 +1,7 @@
 /***************************
  *
  * CHILLI+GARLIC
- * MODEL: Base.js
+ * VIEW: Base.js
  *
  ***************************/
 
@@ -46,11 +46,13 @@ export const domStrings = {
   recipeTime: 'recipe__time',
   recipeServings: 'recipe__servings',
   recipeServingControl: '.recipe-details__servings',
-  recipeFaves: '.faves__icon',
+  recipeFavesIcon: '.faves__icon',
+  recipeFavesText: '.faves__text',
   ingredients: 'ingredients',
-  recipeShopList: '.ingredients__icon',
+  ingredientsIcon: '.ingredients__icon',
+  ingredientsSvg: '.ingredients__svg',
+  ingredientsListText: '.ingredients__listText',
   method: '.method__steps',
-  btnFaves: 'btnFaves',
 };
 
 export const domElements = {
