@@ -22,7 +22,7 @@ import Footer from './components/footer';
 import { ctrlSearch } from './controllers/searchController';
 import { ctrlRecipe } from './controllers/recipeController';
 import { initFaves } from './controllers/favesController';
-import { initShopList } from './controllers/listController';
+import { initShopList } from './controllers/shopListController';
 
 /**************
  * Setup code

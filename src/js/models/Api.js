@@ -24,8 +24,6 @@ export const searchRecipes = async (query, page) => {
     },
   });
 
-  console.log('Results from API', result);
-
   return result;
 };
 
@@ -38,8 +36,6 @@ export const fetchRecipe = async (recipeId) => {
       },
     }
   );
-
-  console.log('Recipe from API', recipe);
 
   return recipe;
 };

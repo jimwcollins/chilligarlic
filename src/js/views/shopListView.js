@@ -45,7 +45,8 @@ export const removePlaceholder = () => {
 };
 
 export const addPlaceholder = () => {
-  document.getElementById(domStrings.shopList__placeholder).style.display = '';
+  document.getElementById(domStrings.shopList__placeholder).style.display =
+    'block';
 };
 
 export const clear = () => {

@@ -32,28 +32,40 @@ export default class ShopList {
     this.list = [];
   }
 
-  // Add an ingredient to the shopping list
-  addItem(quantity, unit, ingredient, recipeID) {
-    const item = {
-      id: uniqid(),
-      quantity,
-      unit,
-      ingredient,
-      recipeID,
-    };
+  addRecipeToList(ingredients) {
+    const newListItems = [];
 
-    this.list.push(item);
+    ingredients.forEach((ingredient) => {
+      newListItems.push({
+        id: uniqid(),
+        quantity: ingredient.quantity,
+        unit: ingredient.unit,
+        ingredient: ingredient.ingredient,
+        recipeID: state.recipe.id,
+      });
+    });
+
+    this.list.push(...newListItems);
+    this.persistList();
+    return newListItems;
+  }
+
+  // Remove all of recipe's ingredients from list
+  removeRecipeFromList(recipeID) {
+    const newList = this.list.filter(
+      (listItem) => listItem.recipeID !== recipeID
+    );
+
+    this.list = newList;
     this.persistList();
   }
 
-  // Remove item from shopping list
   removeItem(id) {
     const indexToDel = this.list.findIndex((item) => item.id === id);
     this.list.splice(indexToDel, 1);
     this.persistList();
   }
 
-  // Clear the list
   clear() {
     this.list = [];
     this.persistList();

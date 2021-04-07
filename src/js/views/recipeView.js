@@ -39,8 +39,6 @@ export const getReturn = () => {
 };
 
 export const renderRecipe = (recipe) => {
-  console.log('Rendering recipe,', recipe);
-
   if (recipe.returnStatus)
     document.querySelector(domStrings.headerBack).style.display = 'flex';
 
