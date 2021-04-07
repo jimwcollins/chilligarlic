@@ -262,17 +262,18 @@
     border: 1.5px solid $color-black;
     box-shadow: 1px 1px 6px rgba($color-black, 0.1);
 
-    // Add arrow - before handles outline color
+    // Add arrow
     &::before {
       position: absolute;
       content: '';
       width: 0;
       height: 0;
-      top: -1rem;
+      top: -1.1rem;
       left: 11.5rem;
       border-width: 0 10px 10px 10px;
       border-style: solid;
       border-color: rgba($color-primary, 1) transparent;
+      z-index: -1;
     }
 
     &__header {
