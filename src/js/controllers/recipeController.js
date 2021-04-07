@@ -8,7 +8,8 @@
 import { domStrings } from '../views/base';
 import Recipe from '../models/Recipe';
 import * as recipeView from '../views/recipeView';
-import { ctrlFaves } from './favesControllers';
+import { ctrlFaves } from './favesController';
+import { ctrlShopList } from './listController';
 
 export const ctrlRecipe = async () => {
   // 0. Add recipe event listeners
