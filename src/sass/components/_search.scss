@@ -9,8 +9,8 @@
     justify-content: center;
     align-items: center;
 
-    width: 80%;
-    height: 3rem;
+    width: 90%;
+    height: 3.5rem;
     border-radius: 25px;
     background-color: $color-grey-light-1;
     border: none;
@@ -21,15 +21,16 @@
     border: none;
     background: transparent;
     padding: 1rem 1rem;
-    // margin-right: -3.5rem; // Move right so button appears on top of input field.
+    margin-bottom: 0.2rem;
 
     font-family: inherit;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     color: inherit;
   }
 
   &__button {
     border: none;
+    margin-bottom: -0.2rem;
     background-color: $color-grey-light-1;
   }
 

@@ -46,13 +46,51 @@
       opacity: 0%;
       visibility: hidden;
     }
+
+    &__heading {
+      color: $color-spot-1;
+      margin-bottom: 2.5rem;
+      animation: animHead 1s ease-in-out;
+    }
+
+    &__box {
+      animation: animBox 1s ease-in-out;
+    }
   }
 }
 
-// Override standard heading color
-.hero__search > .heading--main {
-  color: $color-spot-1;
-  margin-bottom: 1.5rem;
+@keyframes animHead {
+  0% {
+    opacity: 0;
+    transform: translateY(-5rem);
+  }
+
+  80% {
+    opacity: 0.7;
+    transform: translateY(0.4rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animBox {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+
+  80% {
+    opacity: 0.7;
+    transform: translateY(-0.4rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .about {

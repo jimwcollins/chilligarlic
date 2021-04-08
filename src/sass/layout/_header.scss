@@ -24,7 +24,7 @@
   position: fixed;
   top: 0;
   align-items: center;
-  height: 12rem;
+  height: var(--header-height);
   width: 100%;
   background-color: var(--header-background);
   z-index: 100;
@@ -95,11 +95,12 @@
 
       width: 0%;
       border: none;
-      padding-left: 1.5rem;
+      padding-left: 1.75rem;
+      margin-bottom: 0.2rem;
       background: transparent;
 
       font-family: inherit;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       color: inherit;
 
       opacity: 0;
@@ -132,7 +133,6 @@
     &__form:focus-within {
       background-color: var(--color-white);
       width: 25rem;
-      border-radius: 25px;
       border-color: var(--menu-hover-outline);
     }
 
@@ -204,7 +204,7 @@
 
     &__img {
       vertical-align: middle;
-      height: 10rem;
+      height: var(--header-logo-height);
 
       transition: all 1s;
     }
@@ -274,7 +274,7 @@
     background-color: $color-white;
     border-radius: 1rem;
     border: 1.5px solid $color-black;
-    box-shadow: 1px 1px 6px rgba($color-black, 0.1);
+    box-shadow: 0px 1px 6px rgba($color-black, 0.15);
     overflow: hidden;
 
     &__header {
@@ -282,12 +282,12 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.75rem 1rem 0.75rem 1.5rem;
-
+      box-shadow: 0px 1px 6px rgba($color-black, 0.1);
       border-bottom: 1px solid $color-greygreen;
 
       &__text {
         flex: 0 1 75%;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         font-weight: 400;
       }
 
@@ -367,7 +367,7 @@
   overflow: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-  scrollbar-color: $color-primary $color-grey-light-1;
+  scrollbar-color: rgba($color-primary, 0.8) $color-grey-light-1;
 
   &::-webkit-scrollbar {
     width: 1.25rem;
@@ -378,7 +378,7 @@
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 1rem;
-    background: rgba($color-primary, 0.9);
+    background: rgba($color-primary, 0.8);
     border: 0.2rem solid $color-grey-light-1;
   }
 }
@@ -392,7 +392,7 @@
   }
 
   &__text {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   &__quantity {
@@ -417,8 +417,8 @@
     }
 
     &__figure {
-      height: 4.5rem;
-      width: 4.5rem;
+      height: 4.75rem;
+      width: 4.75rem;
       border-radius: 50%;
       overflow: hidden;
     }
@@ -433,12 +433,12 @@
 
   &__details {
     &__title {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 400;
     }
 
     &__author {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: 300;
       color: $color-primary;
     }

@@ -28,7 +28,7 @@ $color-black: #000;
 
 $font-display: 'Josefin Slab', serif;
 $font-body: 'Lato', sans-serif;
-$font-body-size: 1.6rem;
+$font-body-size: 1.7rem;
 
 /*-------------------------*/
 /*----    Header     ------*/
@@ -64,6 +64,8 @@ $menu-hover-color: rgba($color-spot-1, 0.2);
   --menu-hover-outline: var(--color-primary);
   --menu-hover-fill: none;
   --menu-hover-svg: var(--color-white);
+  --header-height: 16rem;
+  --header-logo-height: 13rem;
 }
 
 [data-theme='header-main'] {
@@ -74,4 +76,6 @@ $menu-hover-color: rgba($color-spot-1, 0.2);
   --menu-hover-outline: var(--color-primary);
   --menu-hover-fill: var(--color-white);
   --menu-hover-svg: var(--color-black);
+  --header-height: 12.5rem;
+  --header-logo-height: 10rem;
 }

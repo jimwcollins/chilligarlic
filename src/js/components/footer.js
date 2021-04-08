@@ -31,7 +31,7 @@ class Footer extends HTMLElement {
         />
 
         <p class="footer__text">
-          Designed and coded by James Collins © Chilli+Garlic 2020
+          Designed and coded by James Collins © 2020
         </p>
       </footer>
     `;
