@@ -74,7 +74,7 @@ class Header extends HTMLElement {
                 </p>
               </div>
 
-              <ul id="faves__list"></ul>
+              <ul class="scrollableDropdown" id="faves__list"></ul>
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@ class Header extends HTMLElement {
                 </p>
               </div>
 
-              <ul id="shopList__list"></ul>
+              <ul class="scrollableDropdown" id="shopList__list"></ul>
             </div>
           </div>
         </div>
