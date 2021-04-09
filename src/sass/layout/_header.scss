@@ -219,12 +219,14 @@
     gap: 4rem;
   }
 
+  // Classes for header upon scroll
+
   &--scroll {
     height: 9rem;
+  }
 
-    & img {
-      height: 7.5rem;
-    }
+  &__logo__img--scroll {
+    height: 7.5rem;
   }
 }
 

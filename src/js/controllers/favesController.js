@@ -39,7 +39,9 @@ export const ctrlFaves = () => {
       id: state.recipe.id,
       title: state.recipe.title,
       author: state.recipe.author,
-      imageUrl: state.recipe.imageUrl,
+      imageUrl: state.recipe.imageUrl
+        ? state.recipe.imageUrl
+        : 'img/Logo/Chill_Logo_Small_Red.png',
     };
 
     // Add the fave, set the current recipe fave flag to true, then re-render

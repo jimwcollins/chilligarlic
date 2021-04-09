@@ -38,8 +38,7 @@ class Header extends HTMLElement {
       </form>
 
       <!-- Logo -->
-      <a href="/" class="header__logo"
-        ><img
+      <a href="/" class="header__logo"><img
           src="img/Logo/Chill_Logo_Red.png"
           alt=""
           class="header__logo__img"
@@ -120,6 +119,7 @@ class Header extends HTMLElement {
      *******************/
 
     const header = document.querySelector('.header');
+    const headerLogo = document.querySelector('.header__logo__img');
 
     // Handle home page
     if (this.isHome) {
@@ -130,14 +130,16 @@ class Header extends HTMLElement {
         if (entry.isIntersecting) {
           header.setAttribute('data-theme', 'header-home');
           header.classList.remove('header--scroll');
+          headerLogo.classList.remove('header__logo__img--scroll');
         } else {
           header.setAttribute('data-theme', 'header-main');
           header.classList.add('header--scroll');
+          headerLogo.classList.add('header__logo__img--scroll');
         }
       };
 
       const headerObserverHome = new IntersectionObserver(handleHeader, {
-        threshold: 0.12,
+        threshold: 0.15,
       });
 
       headerObserverHome.observe(heroSection);
@@ -167,8 +169,13 @@ class Header extends HTMLElement {
       const heading = document.querySelector('.heading');
 
       const handleHeaderMain = ([entry]) => {
-        if (!entry.isIntersecting) header.classList.add('header--scroll');
-        else header.classList.remove('header--scroll');
+        if (!entry.isIntersecting) {
+          header.classList.add('header--scroll');
+          headerLogo.classList.add('header__logo__img--scroll');
+        } else {
+          header.classList.remove('header--scroll');
+          headerLogo.classList.remove('header__logo__img--scroll');
+        }
       };
 
       const headerObserverMain = new IntersectionObserver(handleHeaderMain, {
