@@ -54,6 +54,9 @@ export const renderRecipe = (recipe) => {
 
   if (recipe.imageUrl)
     recipeImage.style.backgroundImage = `url(${recipe.imageUrl})`;
+  else
+    recipeImage.style.backgroundImage =
+      'url("img/Recipe/Recipe_placeholder.jpg")';
 
   document
     .getElementById(domStrings.recipeTime)
