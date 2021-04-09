@@ -139,7 +139,7 @@ class Header extends HTMLElement {
       };
 
       const headerObserverHome = new IntersectionObserver(handleHeader, {
-        threshold: 0.15,
+        threshold: 0.14,
       });
 
       headerObserverHome.observe(heroSection);

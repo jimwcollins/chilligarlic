@@ -50,9 +50,10 @@ export const renderRecipe = (recipe) => {
     .getElementById(domStrings.recipeAuthor)
     .insertAdjacentHTML('beforeend', recipe.author);
 
-  document.querySelector(
-    domStrings.image__hero
-  ).style.backgroundImage = `url(${recipe.imageUrl})`;
+  const recipeImage = document.querySelector(domStrings.image__hero);
+
+  if (recipe.imageUrl)
+    recipeImage.style.backgroundImage = `url(${recipe.imageUrl})`;
 
   document
     .getElementById(domStrings.recipeTime)
