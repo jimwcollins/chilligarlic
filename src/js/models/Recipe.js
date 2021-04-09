@@ -48,9 +48,7 @@ export default class Recipe {
       this.servings = recipe.servings;
       this.ingredients = this.parseIngredients(recipe.extendedIngredients);
       this.ingsAdded = false;
-      this.instructions = this.parseInstructions(
-        recipe.analyzedInstructions[0].steps
-      );
+      this.instructions = this.parseInstructions(recipe.instructions);
     } catch (error) {
       alert(error);
       console.log(error);
@@ -87,10 +85,6 @@ export default class Recipe {
     else return unitToParse;
   }
 
-  parseInstructions(instructions) {
-    return instructions.map((instruction) => instruction.step);
-  }
-
   // Update the ingredients
   updateIngredients(type) {
     // First update the servings
@@ -106,5 +100,50 @@ export default class Recipe {
 
     // Change number of number in Recipe object
     this.servings = newServings;
+  }
+
+  parseInstructions(instructions) {
+    const parsedInstructions = [];
+    parsedInstructions.push({
+      subhead: '',
+      steps: [],
+    });
+
+    let subIndex = 0;
+    let count = 1;
+
+    // If in list form, remove <ol> and trailing </li> elements then split on <li>
+    // else split on newlines
+    let splitInstructions;
+
+    if (/<ol>/.test(instructions)) {
+      splitInstructions = instructions
+        .replace(/<ol>|<\/li>|<\/ol>/gi, '')
+        .split('<li>');
+
+      splitInstructions.shift();
+    } else {
+      splitInstructions = instructions.split('\n');
+    }
+
+    // Now split into substeps by looking for colons at the end of lines
+    splitInstructions.forEach((instruction, index) => {
+      if (instruction.endsWith(':') && index === 0) {
+        parsedInstructions[subIndex].subhead = instruction.slice(0, -1);
+      } else if (instruction.endsWith(':')) {
+        parsedInstructions.push({
+          subhead: instruction.endsWith(':') ? instruction.slice(0, -1) : '',
+          steps: [],
+        });
+        subIndex++;
+      } else {
+        parsedInstructions[subIndex].steps.push({
+          number: count++,
+          step: instruction,
+        });
+      }
+    });
+
+    return parsedInstructions;
   }
 } // End Search class

@@ -56,7 +56,7 @@ export const renderRecipe = (recipe) => {
     recipeImage.style.backgroundImage = `url(${recipe.imageUrl})`;
   else
     recipeImage.style.backgroundImage =
-      'url("img/Recipe/Recipe_placeholder.jpg")';
+      'url("/img/Recipe/Recipe_placeholder.jpg")';
 
   document
     .getElementById(domStrings.recipeTime)
@@ -100,8 +100,22 @@ const renderIngredients = (ingredients) => {
 const renderInstructions = (instructions) => {
   const steps = document.querySelector(domStrings.method);
 
-  instructions.forEach((step) => {
-    steps.insertAdjacentHTML('beforeend', `<li>${step}</li>`);
+  instructions.forEach((topStep) => {
+    if (topStep.subhead)
+      steps.insertAdjacentHTML(
+        'beforeend',
+        `<li class='method__subHead'>${topStep.subhead}</li>`
+      );
+
+    topStep.steps.forEach((subStep) => {
+      steps.insertAdjacentHTML(
+        'beforeend',
+        `<li class='method__step'>
+          <span class='method__step__num'>${subStep.number}</span>
+          <span class='method__step__text'>${subStep.step}</span>
+        </li>`
+      );
+    });
   });
 };
 

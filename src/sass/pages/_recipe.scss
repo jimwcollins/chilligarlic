@@ -280,29 +280,28 @@
 
   margin: 5rem 0;
 
-  // Use CSS counters to count method steps and the before pseudoelement to style the number
   &__steps {
     list-style: none;
+  }
 
-    & > li {
-      position: relative;
-      counter-increment: step-counter;
-      margin-left: 2.5rem; // Margin between list itself and edge - i.e. space for ::before element (number)
-      margin-bottom: 2rem; // Space between list items
-      padding-left: 0.5rem; // Space between number and list item
+  &__subHead {
+    margin: 2rem 0rem 1rem 0rem;
+    font-weight: 400;
+  }
+
+  &__step {
+    display: flex;
+
+    &__num {
+      font-family: $font-body;
+      font-size: 1.75rem;
+      color: $color-black;
+      font-weight: 600;
+      margin-right: 2.5rem;
+    }
+
+    &__text {
       font-size: 1.7rem;
-
-      &::before {
-        position: absolute;
-        left: -2.5rem; // Place numbers at edge of list
-        top: -0.1rem;
-
-        content: counter(step-counter);
-        font-family: $font-body;
-        font-size: 1.75rem;
-        color: $color-black;
-        font-weight: 600;
-      }
     }
   }
 }
