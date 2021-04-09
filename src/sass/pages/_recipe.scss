@@ -293,6 +293,7 @@
     display: flex;
 
     &__num {
+      width: 2%;
       font-family: $font-body;
       font-size: 1.75rem;
       color: $color-black;
@@ -301,6 +302,7 @@
     }
 
     &__text {
+      width: 98%;
       font-size: 1.7rem;
     }
   }
