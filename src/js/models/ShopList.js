@@ -28,6 +28,7 @@
 
 // Import external package to generate unique ids for us
 import uniqid from 'uniqid';
+import { aisleRef } from './ShopList_Ref';
 
 export default class ShopList {
   constructor() {
@@ -36,17 +37,25 @@ export default class ShopList {
 
   addRecipeToList(ingredients) {
     ingredients.forEach((ingredient) => {
+      const parsedAisle = this.parseAisle(ingredient.aisle);
+
       // Is this ingredient's aisle already in list
       const aisleIndex = this.list.findIndex(
-        (aisle) => aisle.aisle === ingredient.aisle
+        (aisle) => aisle.aisle === parsedAisle
       );
 
       if (aisleIndex !== -1) {
         this.addItemToList(ingredient, aisleIndex);
       } else {
-        this.list.push({ aisle: ingredient.aisle, aisleList: [] });
+        this.list.push({ aisle: parsedAisle, aisleList: [] });
         this.addItemToList(ingredient, this.list.length - 1);
       }
+    });
+
+    this.list.sort((a, b) => {
+      if (a.aisle < b.aisle) return -1;
+      else if (a.aisle > b.aisle) return 1;
+      else return 0;
     });
 
     this.persistList();
@@ -59,8 +68,15 @@ export default class ShopList {
       unit: ingredient.unit,
       ingredient: ingredient.ingredient,
       recipeID: state.recipe.id,
-      aisle: ingredient.aisle,
     });
+  }
+
+  // Standardise the aisle text
+  parseAisle(aisle) {
+    const parsedRef = aisleRef[aisle];
+
+    if (parsedRef) return parsedRef;
+    else return aisle;
   }
 
   // Remove all of recipe's ingredients from list
