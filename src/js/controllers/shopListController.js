@@ -28,13 +28,12 @@ export const initShopList = () => {
 export const ctrlShopList = () => {
   // If the current recipe's ingredients are not already on list then add them, otherwise remove them
   if (!state.recipe.ingsAdded) {
-    const itemsToRender = state.shopList.addRecipeToList(
-      state.recipe.ingredients
-    );
+    state.shopList.addRecipeToList(state.recipe.ingredients);
     state.recipe.ingsAdded = true;
     recipeView.renderListStatus(true);
+    shopListView.clear();
     shopListView.removePlaceholder();
-    shopListView.renderList(itemsToRender);
+    shopListView.renderList(state.shopList.list);
   } else {
     state.shopList.removeRecipeFromList(state.recipe.id);
     state.recipe.ingsAdded = false;
@@ -60,7 +59,7 @@ document
 
       // Delete from state shopping list and UI. Restore placeholder if last item.
       // If this deletes the last item for current recipe, update recipe view.
-      const lastRecipeItemDeleted = state.shopList.removeItem(
+      const { removeAisle, lastRecipeItemDeleted } = state.shopList.removeItem(
         itemToDel.dataset.item_id
       );
 
@@ -69,7 +68,7 @@ document
         recipeView.renderListStatus(false);
       }
 
-      shopListView.removeItem(itemToDel);
+      shopListView.removeItem(itemToDel, removeAisle);
 
       if (state.shopList.list.length === 0) {
         shopListView.addPlaceholder();

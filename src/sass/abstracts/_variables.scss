@@ -21,6 +21,8 @@ $color-grey-light-1: #faf9f9;
 $color-grey-light-2: #f4f2f2;
 $color-grey-light-3: #f0eeee;
 
+$color-grey-dark: #d0cfcf;
+
 $color-white: #fff;
 $color-black: #000;
 
@@ -64,8 +66,8 @@ $menu-hover-color: rgba($color-spot-1, 0.2);
   --menu-hover-outline: var(--color-primary);
   --menu-hover-fill: none;
   --menu-hover-svg: var(--color-white);
-  --header-height: 16rem;
-  --header-logo-height: 13rem;
+  --header-height: 15rem;
+  --header-logo-height: 11.5rem;
 }
 
 [data-theme='header-main'] {

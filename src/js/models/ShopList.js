@@ -14,8 +14,10 @@
  *       addItems
  *       removeItem
  *   Properties:
- *       list: array of listItem objects
- *           listItem:
+ *       list: array of aisle objects
+ *        aisle:
+ *          aisle, aisleList: array of list items
+ *            listItem:
  *               id
  *               quantity
  *               unit
@@ -33,43 +35,76 @@ export default class ShopList {
   }
 
   addRecipeToList(ingredients) {
-    const newListItems = [];
-
     ingredients.forEach((ingredient) => {
-      newListItems.push({
-        id: uniqid(),
-        quantity: ingredient.quantity,
-        unit: ingredient.unit,
-        ingredient: ingredient.ingredient,
-        recipeID: state.recipe.id,
-      });
+      // Is this ingredient's aisle already in list
+      const aisleIndex = this.list.findIndex(
+        (aisle) => aisle.aisle === ingredient.aisle
+      );
+
+      if (aisleIndex !== -1) {
+        this.addItemToList(ingredient, aisleIndex);
+      } else {
+        this.list.push({ aisle: ingredient.aisle, aisleList: [] });
+        this.addItemToList(ingredient, this.list.length - 1);
+      }
     });
 
-    this.list.push(...newListItems);
     this.persistList();
-    return newListItems;
+  }
+
+  addItemToList(ingredient, index) {
+    this.list[index].aisleList.push({
+      id: uniqid(),
+      quantity: ingredient.quantity,
+      unit: ingredient.unit,
+      ingredient: ingredient.ingredient,
+      recipeID: state.recipe.id,
+      aisle: ingredient.aisle,
+    });
   }
 
   // Remove all of recipe's ingredients from list
   removeRecipeFromList(recipeID) {
-    const newList = this.list.filter(
-      (listItem) => listItem.recipeID !== recipeID
-    );
+    for (let i = this.list.length - 1; i >= 0; i--) {
+      const currentAisle = this.list[i];
 
-    this.list = newList;
+      const newAisleList = currentAisle.aisleList.filter(
+        (listItem) => listItem.recipeID !== recipeID
+      );
+
+      if (newAisleList.length > 0) currentAisle.aisleList = newAisleList;
+      else this.list.splice(i, 1);
+    }
+
     this.persistList();
   }
 
   removeItem(id) {
-    // Delete item from shopping list
-    const indexToDel = this.list.findIndex((item) => item.id === id);
-    const item = this.list.find((item) => item.id === id);
-    this.list.splice(indexToDel, 1);
-    this.persistList();
+    for (let i = this.list.length - 1; i >= 0; i--) {
+      const aisle = this.list[i];
+      const indexToDel = aisle.aisleList.findIndex((item) => item.id === id);
+      let removeAisle;
 
-    // Return boolean indicating if this is last item on list for current recipe
-    if (state.recipe && state.recipe.id === item.recipeID)
-      return !this.ingsAdded(state.recipe.id);
+      if (indexToDel !== -1) {
+        const item = aisle.aisleList.find((item) => item.id === id);
+        aisle.aisleList.splice(indexToDel, 1);
+
+        // Remove aisle if all subitems removed
+        if (aisle.aisleList.length === 0) {
+          removeAisle = true;
+          this.list.splice(i, 1);
+        }
+
+        this.persistList();
+
+        // Return object indicating if this is last item on list for current recipe
+        // and if we need to remove parent list in UI
+        if (state.recipe && state.recipe.id === item.recipeID) {
+          const lastRecipeItemDeleted = !this.ingsAdded(state.recipe.id);
+          return { removeAisle, lastRecipeItemDeleted };
+        }
+      }
+    }
   }
 
   clear() {
@@ -94,6 +129,14 @@ export default class ShopList {
 
   // Determines if this recipe's ingredients are on shopping list
   ingsAdded(recipeID) {
-    return this.list.some((listItem) => listItem.recipeID === recipeID);
+    for (const aisle of this.list) {
+      const found = aisle.aisleList.some(
+        (listItem) => listItem.recipeID === recipeID
+      );
+
+      if (found) return true;
+    }
+
+    return false;
   }
 }

@@ -64,6 +64,7 @@ export default class Recipe {
       ),
       unit: this.parseUnit(ingredient.measures.metric.unitShort.toLowerCase()),
       ingredient: ingredient.name,
+      aisle: ingredient.aisle,
     }));
   }
 

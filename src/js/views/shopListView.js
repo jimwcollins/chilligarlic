@@ -9,16 +9,27 @@ import { domStrings } from './base';
 
 export const renderList = (list) => {
   // Grab the list in the DOM
-  const shopList = document.getElementById(domStrings.shopList__list);
+  const domShopList = document.getElementById(domStrings.shopList__list);
 
-  list.forEach((item) => {
-    renderItem(shopList, item);
-  });
+  list.forEach((aisleList) => renderAisleList(domShopList, aisleList));
 };
 
-const renderItem = (shopList, item) => {
+const renderAisleList = (domShopList, aisleList) => {
+  const aisleListHtml = /* html */ `
+    <ul class='shoplist__aisleList' id='aisleList__${aisleList.aisle}'>
+      <li class='shoplist__aisleTitle'>${aisleList.aisle}</li>
+    </ul>
+  `;
+
+  domShopList.insertAdjacentHTML('beforeend', aisleListHtml);
+
+  const domAisleList = document.getElementById(`aisleList__${aisleList.aisle}`);
+  aisleList.aisleList.forEach((item) => renderItem(domAisleList, item));
+};
+
+const renderItem = (domAisleList, item) => {
   // Set up our HTML
-  const html = /* html */ `
+  const itemHtml = /* html */ `
         <li class="menu__dropdown__item shoplist__item" data-item_id=${item.id}>
             <p class="shoplist__text shoplist__quantity">${item.quantity}${item.unit}</p>
             <p class="shoplist__text shoplist__ingredient">${item.ingredient}</p>
@@ -27,11 +38,17 @@ const renderItem = (shopList, item) => {
             </svg>
         </li>
     `;
-  shopList.insertAdjacentHTML('beforeend', html);
+  domAisleList.insertAdjacentHTML('beforeend', itemHtml);
 };
 
-export const removeItem = (item) => {
-  item.parentElement.removeChild(item);
+// Remove entire aisle if it's final item in it
+export const removeItem = (item, removeAisle) => {
+  if (removeAisle) {
+    const aisle = item.parentElement;
+    aisle.parentElement.removeChild(aisle);
+  } else {
+    item.parentElement.removeChild(item);
+  }
 };
 
 export const removePlaceholder = () => {

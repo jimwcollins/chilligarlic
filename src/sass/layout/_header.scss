@@ -226,7 +226,7 @@
   }
 
   &__logo__img--scroll {
-    height: 7.5rem;
+    height: 7.25rem;
   }
 }
 
@@ -317,10 +317,6 @@
 
       transition: all 0.3s;
 
-      &:not(:last-child) {
-        border-bottom: 0.5px solid $color-greygreen;
-      }
-
       &:hover {
         background-color: $menu-hover-color;
       }
@@ -386,11 +382,23 @@
 }
 
 .shoplist {
+  &__aisleTitle {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    background-color: $color-grey-light-3;
+    color: $color-black;
+    padding: 0.5rem 0rem 0.5rem 1rem;
+  }
+
   &__item {
     display: grid;
     grid-template-columns: 5rem 1fr min-content;
     column-gap: 1rem;
     align-items: center;
+
+    &:not(:last-child) {
+      border-bottom: 1px dotted $color-grey-dark;
+    }
   }
 
   &__text {
@@ -430,6 +438,10 @@
       height: 100%;
       width: 100%;
       object-fit: cover;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 0.5px solid $color-greygreen;
     }
   }
 
