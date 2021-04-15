@@ -19,8 +19,26 @@
 ***************************************************************************/
 
 .grid {
-    display: grid;
+  display: grid;
 
-    grid-template-columns: [full-start] minmax(6rem, 1fr) [content-start] repeat(15,  [col-start] minmax(min-content, 6.2rem) [col-end]) [content-end] minmax(6rem, 1fr) [full-end];
+  grid-template-columns:
+    [full-start] minmax(13rem, 1fr) [content-start] repeat(
+      15,
+      [col-start] minmax(3rem, 6.2rem) [col-end]
+    )
+    [content-end] minmax(13rem, 1fr) [full-end];
+  column-gap: 1.5rem;
+}
+
+// Tablet break-point
+@media only screen and (max-width: $bp-tablet-med) {
+  .grid {
+    grid-template-columns:
+      [full-start] minmax(5rem, 1fr) [content-start] repeat(
+        15,
+        [col-start] minmax(2rem, 5rem) [col-end]
+      )
+      [content-end] minmax(5rem, 1fr) [full-end];
     column-gap: 1.5rem;
+  }
 }
