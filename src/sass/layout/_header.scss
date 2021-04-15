@@ -15,17 +15,23 @@
 
 // Classes
 
+.header-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
 .header {
   // Position
   grid-column: full-start / full-end;
 
   // Display
   // The default grid class is applied in the html to handle columns
-  position: fixed;
-  top: 0;
+
   align-items: center;
   height: var(--header-height);
-  width: 100%;
+
   background-color: var(--header-background);
   z-index: 100;
   transition: all 0.5s;
@@ -86,6 +92,19 @@
       &--hidden {
         opacity: 0%;
         visibility: hidden;
+      }
+
+      @media only screen and (max-width: $bp-tablet-med) {
+        display: none;
+      }
+    }
+
+    &--mob {
+      display: none;
+
+      @media only screen and (max-width: $bp-tablet-med) {
+        display: flex;
+        grid-column: content-start / span 4;
       }
     }
 
@@ -461,5 +480,42 @@
       font-weight: 300;
       color: $color-primary;
     }
+  }
+}
+
+.header__mobileSearch {
+  background-color: $color-greygreen;
+  height: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  align-items: center;
+
+  &--active {
+    height: 7rem;
+    visibility: visible;
+  }
+
+  &__form {
+    grid-column: content-start / content-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+    visibility: inherit;
+  }
+
+  &__input {
+    background-color: $color-grey-light-1;
+    border-radius: 25px;
+    width: 60%;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: inherit;
+    font-size: 1.6rem;
+    color: inherit;
+  }
+
+  &__controls {
+    display: flex;
   }
 }
