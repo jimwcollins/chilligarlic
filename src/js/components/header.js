@@ -38,8 +38,9 @@ class Header extends HTMLElement {
           </button>
         </form>
 
-        <figure class="header__icon header__search--mob">
-          <svg class="header__icon__svg">
+        <!-- Mobile-only search button -->
+        <figure class="header__icon header__mobSearch__icon">
+          <svg class="header__icon__svg header__mobSearch__icon__svg">
             <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-magnifying-glass"></use>
           </svg>
         </figure>
@@ -121,30 +122,31 @@ class Header extends HTMLElement {
         </nav>
       </div>
 
-      <div class="header__mobileSearch grid">
-        <!-- Search -->
+      <!-- Mobile search -->
+      <div class="header__mobSearch grid">
         <form
           action="searchResults.html"
-          class="header__mobileSearch__form"
+          class="header__mobSearch__form"
           method="GET"
           id="search"
         >
           <input
             type="text"
-            class="header__mobileSearch__input"
+            class="header__mobSearch__input"
             name="search"
             autocomplete="off"
             placeholder="Search recipes"
+            required
           />
 
-          <div class="header__mobileSearch__controls">          
-            <figure class="header__icon header__search--mob">
-              <svg class="header__icon__svg">
-                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-magnifying-glass"></use>
+          <div class="header__mobSearch__controls">          
+            <button class="header__mobSearch__btn" id="mobSearch__clear" type="button">
+              <svg class="header__mobSearch__svg header__mobSearch__svg--cross">
+                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-cross"></use>
               </svg>
-            </figure>
-            <button class="header__icon" type="button">
-              <svg class="header__search__icon">
+            </button>
+            <button class="header__mobSearch__btn" type="submit">
+              <svg class="header__mobSearch__svg">
                 <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-magnifying-glass"></use>
               </svg>
             </button>
@@ -158,6 +160,7 @@ class Header extends HTMLElement {
      * Header JS
      *******************/
 
+    const headerContainer = document.querySelector('.header-container');
     const header = document.querySelector('.header');
     const headerLogo = document.querySelector('.header__logo__img');
 
@@ -168,11 +171,11 @@ class Header extends HTMLElement {
       // Change theme of header when we near end of hero
       const handleHeader = ([entry]) => {
         if (entry.isIntersecting) {
-          header.setAttribute('data-theme', 'header-home');
+          headerContainer.setAttribute('data-theme', 'header-home');
           header.classList.remove('header--scroll');
           headerLogo.classList.remove('header__logo__img--scroll');
         } else {
-          header.setAttribute('data-theme', 'header-main');
+          headerContainer.setAttribute('data-theme', 'header-main');
           header.classList.add('header--scroll');
           headerLogo.classList.add('header__logo__img--scroll');
         }
@@ -187,15 +190,20 @@ class Header extends HTMLElement {
       // Handle search on home page
       const heroSearch = document.querySelector('.hero__search');
       const headerSearch = document.querySelector('.header__search__form');
+      const headerMobSearch = document.querySelector(
+        '.header__mobSearch__icon'
+      );
 
       // Hide main search and show header search when hero passes 95% threshold
       const handleSearch = ([entry]) => {
         if (entry.isIntersecting) {
           heroSearch.classList.remove('hero__search--hidden');
           headerSearch.classList.add('header__search__form--hidden');
+          headerMobSearch.classList.add('header__mobSearch__icon--hidden');
         } else {
           heroSearch.classList.add('hero__search--hidden');
           headerSearch.classList.remove('header__search__form--hidden');
+          headerMobSearch.classList.remove('header__mobSearch__icon--hidden');
         }
       };
 
@@ -226,14 +234,48 @@ class Header extends HTMLElement {
     }
 
     // Handle mobile search
+    document
+      .querySelector('.header__mobSearch__icon')
+      .addEventListener('click', () => handleMobSearch());
 
     document
-      .querySelector('.header__search--mob')
-      .addEventListener('click', (event) => {
-        console.log('Reveal mobile search');
-        const mobSearch = document.querySelector('.header__mobileSearch');
-        mobSearch.classList.toggle('header__mobileSearch--active');
-      });
+      .getElementById('mobSearch__clear')
+      .addEventListener('click', () => handleMobSearch());
+
+    const handleMobSearch = () => {
+      const mobSearchIcon = document.querySelector('.header__mobSearch__icon');
+      const mobSearchIconSvg = document.querySelector(
+        '.header__mobSearch__icon__svg'
+      );
+      const mobSearch = document.querySelector('.header__mobSearch');
+      const mobForm = document.querySelector('.header__mobSearch__form');
+      const mobControls = document.querySelector(
+        '.header__mobSearch__controls'
+      );
+      const searchActive = document.querySelector('.header__mobSearch--active');
+
+      if (searchActive) {
+        mobForm.classList.remove('header__mobSearch__form--active');
+        mobControls.classList.remove('header__mobSearch__controls--active');
+
+        setTimeout(() => {
+          mobSearch.classList.remove('header__mobSearch--active');
+          mobSearchIcon.classList.remove('header__mobSearch__icon--active');
+          mobSearchIconSvg.classList.remove(
+            'header__mobSearch__icon__svg--active'
+          );
+        }, 400);
+      } else {
+        mobSearchIcon.classList.add('header__mobSearch__icon--active');
+        mobSearchIconSvg.classList.add('header__mobSearch__icon__svg--active');
+        mobSearch.classList.add('header__mobSearch--active');
+
+        setTimeout(() => {
+          mobForm.classList.add('header__mobSearch__form--active');
+          mobControls.classList.add('header__mobSearch__controls--active');
+        }, 200);
+      }
+    };
   }
 }
 

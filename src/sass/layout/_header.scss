@@ -57,10 +57,12 @@
       fill: var(--menu-icon-svg);
     }
 
-    // Hover effects for header icon
-    &:hover {
-      border: $icon-border-width solid var(--menu-hover-outline);
-      background-color: var(--menu-hover-fill);
+    // Hover effects for header icon if we're on desktop
+    @media only screen and (min-width: $bp-desk-sm) {
+      &:hover {
+        border: $icon-border-width solid var(--menu-hover-outline);
+        background-color: var(--menu-hover-fill);
+      }
     }
 
     &:hover .header__icon__svg {
@@ -96,15 +98,6 @@
 
       @media only screen and (max-width: $bp-tablet-med) {
         display: none;
-      }
-    }
-
-    &--mob {
-      display: none;
-
-      @media only screen and (max-width: $bp-tablet-med) {
-        display: flex;
-        grid-column: content-start / span 4;
       }
     }
 
@@ -209,7 +202,6 @@
     }
 
     // Hover effect displays text
-
     &__link:hover + &__text {
       opacity: 1;
       visibility: visible;
@@ -239,9 +231,8 @@
   }
 
   // Classes for header upon scroll
-
   &--scroll {
-    height: 9rem;
+    height: 10rem;
   }
 
   &__logo__img--scroll {
@@ -483,16 +474,45 @@
   }
 }
 
-.header__mobileSearch {
-  background-color: $color-greygreen;
+.header__mobSearch {
+  background-color: var(--mobileSearch-bgCol);
   height: 0;
+  align-items: center;
   visibility: hidden;
   transition: all 0.5s;
-  align-items: center;
+
+  &__icon {
+    display: none;
+    transition: all 0.5s;
+
+    @media only screen and (max-width: $bp-tablet-med) {
+      display: flex;
+      grid-column: content-start / span 4;
+    }
+
+    &--hidden {
+      opacity: 0%;
+      visibility: hidden;
+    }
+
+    &--active {
+      border-color: $color-primary;
+      background-color: $color-primary;
+    }
+
+    &__svg--active {
+      fill: $color-white;
+    }
+  }
 
   &--active {
-    height: 7rem;
+    height: 6.5rem;
     visibility: visible;
+  }
+
+  &__btn {
+    background-color: transparent;
+    margin-left: 1rem;
   }
 
   &__form {
@@ -501,13 +521,21 @@
     justify-content: space-between;
     align-items: center;
     height: 3.5rem;
-    visibility: inherit;
+    opacity: 0%;
+    visibility: hidden;
+    transition: all 1s;
+
+    &--active {
+      opacity: 100%;
+      visibility: visible;
+    }
   }
 
   &__input {
     background-color: $color-grey-light-1;
     border-radius: 25px;
-    width: 60%;
+    height: 100%;
+    width: 50%;
     border: none;
     padding: 1rem 2rem;
     font-family: inherit;
@@ -517,5 +545,34 @@
 
   &__controls {
     display: flex;
+    opacity: 0%;
+    visibility: hidden;
+    transition: all 0.5s;
+
+    &--active {
+      opacity: 100%;
+      visibility: visible;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 3.5rem;
+    border: $icon-border-width solid var(--mobileSearch-iconCol);
+    border-radius: 25px;
+  }
+
+  &__svg {
+    height: 65%;
+    width: 65%;
+    fill: var(--mobileSearch-iconCol);
+
+    &--cross {
+      height: 80%;
+      width: 80%;
+    }
   }
 }

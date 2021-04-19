@@ -10,6 +10,7 @@
 // Breakpoints
 
 $bp-tablet-med: 1023px;
+$bp-desk-sm: 1140px;
 
 // Colours
 
@@ -54,6 +55,7 @@ $menu-hover-color: rgba($color-spot-1, 0.2);
 :root {
   --color-primary: #762627;
   --color-secondary: #3f7c7e;
+  --color-tertiary: #9aa6a4;
 
   --color-spot-1: #d85730;
   --color-spot-2: #e0a55c;
@@ -64,7 +66,6 @@ $menu-hover-color: rgba($color-spot-1, 0.2);
 
 [data-theme='header-home'] {
   --header-background: transparent;
-
   --menu-icon-circle: var(--color-white);
   --menu-icon-svg: var(--color-white);
   --menu-hover-outline: var(--color-primary);
@@ -72,11 +73,13 @@ $menu-hover-color: rgba($color-spot-1, 0.2);
   --menu-hover-svg: var(--color-white);
   --header-height: 15rem;
   --header-logo-height: 11.5rem;
+
+  --mobileSearch-bgCol: rgba(255, 255, 255, 0.15);
+  --mobileSearch-iconCol: var(--color-white);
 }
 
 [data-theme='header-main'] {
   --header-background: var(--color-white);
-
   --menu-icon-circle: var(--color-black);
   --menu-icon-svg: var(--color-black);
   --menu-hover-outline: var(--color-primary);
@@ -84,4 +87,7 @@ $menu-hover-color: rgba($color-spot-1, 0.2);
   --menu-hover-svg: var(--color-black);
   --header-height: 12.5rem;
   --header-logo-height: 10rem;
+
+  --mobileSearch-bgCol: var(--color-primary);
+  --mobileSearch-iconCol: var(--color-white);
 }
