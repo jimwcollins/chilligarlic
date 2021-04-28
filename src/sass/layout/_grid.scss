@@ -34,11 +34,11 @@
 @media only screen and (max-width: $bp-tablet-med) {
   .grid {
     grid-template-columns:
-      [full-start] minmax(5rem, 1fr) [content-start] repeat(
+      [full-start] minmax(7rem, 1fr) [content-start] repeat(
         15,
         [col-start] minmax(2rem, 5rem) [col-end]
       )
-      [content-end] minmax(5rem, 1fr) [full-end];
+      [content-end] minmax(7rem, 1fr) [full-end];
     column-gap: 1.5rem;
   }
 }

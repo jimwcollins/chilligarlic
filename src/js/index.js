@@ -17,6 +17,7 @@ import { domStrings } from './views/base';
 
 // Components
 import Header from './components/header';
+import SidePanel from './components/sidePanel';
 import Footer from './components/footer';
 
 import { ctrlSearch } from './controllers/searchController';

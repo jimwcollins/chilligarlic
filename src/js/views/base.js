@@ -21,7 +21,7 @@ export const domStrings = {
 
   // Faves
   menu__faves: 'menu__faves',
-  faves__list: 'faves__list',
+  faves__list: '#faves__list',
   faves__edit: '#faves__edit',
   faves__clear: '#faves__clear',
   faves__placeholder: 'faves__placeholder',

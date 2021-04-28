@@ -73,6 +73,7 @@ $menu-hover-color: rgba($color-spot-1, 0.2);
   --menu-hover-svg: var(--color-white);
   --header-height: 15rem;
   --header-logo-height: 11.5rem;
+  --header-background-panel: var(--color-white);
 
   --mobileSearch-bgCol: rgba(255, 255, 255, 0.15);
   --mobileSearch-iconCol: var(--color-white);
@@ -87,7 +88,19 @@ $menu-hover-color: rgba($color-spot-1, 0.2);
   --menu-hover-svg: var(--color-black);
   --header-height: 12.5rem;
   --header-logo-height: 10rem;
+  --header-background-panel: var(--color-white);
 
   --mobileSearch-bgCol: var(--color-primary);
   --mobileSearch-iconCol: var(--color-white);
+}
+
+[data-theme='header-home-panel'] {
+  --header-background: var(--color-white);
+  --menu-icon-circle: var(--color-black);
+  --menu-icon-svg: var(--color-black);
+  --menu-hover-outline: var(--color-primary);
+  --menu-hover-fill: var(--color-white);
+  --menu-hover-svg: var(--color-black);
+  --header-height: 15rem;
+  --header-logo-height: 11.5rem;
 }

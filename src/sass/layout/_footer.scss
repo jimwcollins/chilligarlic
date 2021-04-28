@@ -11,6 +11,7 @@
   display: grid;
   grid-template-columns: 1fr min-content 1fr;
   align-items: center;
+  z-index: 100;
 
   // Style
   background-color: rgba($color-greygreen, 0.3);

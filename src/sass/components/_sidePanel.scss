@@ -1,0 +1,17 @@
+/*-------------------------*/
+/*--   CHILLI+GARLIC     --*/
+/*-    sidePanel.scss    --*/
+/*-------------------------*/
+
+.sidePanel {
+  &__header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+  }
+
+  &__icon {
+    height: 1.75rem;
+    width: 1.75rem;
+  }
+}

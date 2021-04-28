@@ -222,12 +222,29 @@
   }
 
   &__nav {
-    grid-column: col-start 14 / span 2;
+    grid-column-end: content-end;
     justify-self: end;
 
     display: grid;
     grid-template-columns: repeat(2, min-content);
     gap: 4rem;
+
+    @media only screen and (max-width: $bp-tablet-med) {
+      display: none;
+    }
+  }
+
+  &__mobNav {
+    grid-column-end: content-end;
+    justify-self: end;
+
+    display: none;
+
+    @media only screen and (max-width: $bp-tablet-med) {
+      display: grid;
+      grid-template-columns: repeat(2, min-content);
+      gap: 4rem;
+    }
   }
 
   // Classes for header upon scroll
@@ -237,6 +254,11 @@
 
   &__logo__img--scroll {
     height: 7.25rem;
+  }
+
+  // Classes for header when mobile sidepanel open
+  &--panel {
+    background-color: var(--header-background-panel);
   }
 }
 
@@ -351,7 +373,7 @@
     }
   }
 
-  // Display menu on hover
+  // Display menu on hover if on desktop
   &:hover > &__panel {
     opacity: 1;
     visibility: visible;

@@ -3,20 +3,21 @@
 /*------ Main.scss -------*/
 /*-------------------------*/
 
-@import "abstracts/variables";
+@import 'abstracts/variables';
 
-@import "base/base";
-@import "base/typography";
+@import 'base/base';
+@import 'base/typography';
 
-@import "components/box";
-@import "components/icon";
-@import "components/image";
-@import "components/search";
+@import 'components/box';
+@import 'components/icon';
+@import 'components/image';
+@import 'components/search';
+@import 'components/sidePanel';
 
-@import "layout/footer";
-@import "layout/grid";
-@import "layout/header";
+@import 'layout/footer';
+@import 'layout/grid';
+@import 'layout/header';
 
-@import "pages/home";
-@import "pages/recipe";
-@import "pages/searchResults";
+@import 'pages/home';
+@import 'pages/recipe';
+@import 'pages/searchResults';

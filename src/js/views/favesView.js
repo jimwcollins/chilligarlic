@@ -16,8 +16,8 @@ import { domStrings } from './base';
  ***********/
 
 export const renderFave = (objFave) => {
-  // Get the faves menu in the DOM
-  const faveList = document.getElementById(domStrings.faves__list);
+  // Get the faves menu in the DOM for both desktop and mobile views
+  const faveList = document.querySelectorAll(domStrings.faves__list);
 
   const htmlFave = `
         <li class="menu__dropdown__item faves__item" id="${objFave.id}">
@@ -36,7 +36,10 @@ export const renderFave = (objFave) => {
         </li>  
     `;
 
-  faveList.insertAdjacentHTML('beforeend', htmlFave);
+  // Now add faves for both views
+  faveList.forEach((list) => {
+    list.insertAdjacentHTML('beforeend', htmlFave);
+  });
 };
 
 // Remove fave from UI

@@ -6,6 +6,10 @@
  ***************************/
 
 class Header extends HTMLElement {
+  constructor() {
+    super();
+  }
+
   connectedCallback() {
     this.isHome = this.getAttribute('home');
 
@@ -120,6 +124,19 @@ class Header extends HTMLElement {
             </div>
           </div>
         </nav>
+
+        <nav class="header__mobNav">
+          <figure class="header__icon" id='mobNav__fave'>
+            <svg class="header__icon__svg">
+              <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-heart"></use>
+            </svg>
+          </figure>
+          <figure class="header__icon" id='mobNav__shopList'>
+          <svg class="header__icon__svg">
+            <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-list2"></use>
+          </svg>
+        </figure>
+        </nav>
       </div>
 
       <!-- Mobile search -->
@@ -153,6 +170,27 @@ class Header extends HTMLElement {
           </div>
         </form>
       </div>
+
+      <sidepanel-comp id="sidePanel__faves">
+          <div class="sidePanel__header">
+            <p>My Favourites</p>
+            <svg class="sidePanel__icon" id="faves__clear">
+              <use
+                xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"
+              ></use>
+            </svg>
+          </div>
+
+          <div id="faves__placeholder">
+            <p>
+              Love a recipe? This could be its new home!
+            </p>
+          </div>
+
+          <ul id="faves__list"></ul>
+      </sidepanel-comp>
+
+      <sidepanel-comp id="sidePanel__shopList">Shopping List</sidepanel-comp>
     </header>
     `;
 
@@ -276,6 +314,18 @@ class Header extends HTMLElement {
         }, 200);
       }
     };
+
+    // Handle mobile nav buttons
+    const mobNavFave = document.getElementById('mobNav__fave');
+    const mobNavShop = document.getElementById('mobNav__shopList');
+
+    mobNavFave.addEventListener('click', () => {
+      document.getElementById('sidePanel__faves').open();
+    });
+
+    mobNavShop.addEventListener('click', () => {
+      document.getElementById('sidePanel__shopList').open();
+    });
   }
 }
 
