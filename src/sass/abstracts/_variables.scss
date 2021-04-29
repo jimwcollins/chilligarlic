@@ -9,15 +9,16 @@
 
 // Breakpoints
 
-$bp-tablet-med: 1023px;
+$bp-tablet-med: 1024px;
+$bp-desk: 1025px;
 $bp-desk-sm: 1140px;
 
 // Colours
 
-$color-primary: #762627;
+$color-primary: #762627e5;
 $color-secondary: #3f7c7e;
 
-$color-spot-1: #d85730;
+$color-spot-1: #c93e1f;
 $color-spot-2: #e0a55c;
 
 $color-greygreen: #9aa6a4;
@@ -47,8 +48,10 @@ $header-height: 12rem;
 
 $icon-border-width: 1.5px;
 $menu-transition: 0.5s;
+$menu-hover-color: rgba($color-spot-1, 0.1);
 
-$menu-hover-color: rgba($color-spot-1, 0.2);
+// Side Panel
+$panel-padding: 2rem;
 
 // Header Themes
 

@@ -1,0 +1,379 @@
+/*-------------------------*/
+/*--   CHILLI+GARLIC     --*/
+/*-     Menu.scss      --*/
+/*-------------------------*/
+
+// Styles for menu dropdowns
+// and faves/shopping list in menu and side panel
+
+// General dropdown class
+.menu {
+  position: relative;
+
+  &__panel {
+    position: absolute;
+    top: 4.5rem;
+    left: -12.25rem;
+    width: 28rem;
+    padding-top: 1rem;
+    z-index: 10;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all $menu-transition;
+
+    // Add arrow
+    &::before {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 0;
+      top: 0rem;
+      left: 13rem;
+      border-width: 0 10px 10px 10px;
+      border-style: solid;
+      border-color: rgba($color-primary, 1) transparent;
+      z-index: -1;
+    }
+  }
+
+  &__placeholder {
+    padding: 0.75rem 1rem 1.2rem 1.5rem;
+
+    &__text {
+      font-size: 1.4rem;
+    }
+  }
+
+  // Dropdown menu
+  &__dropdown {
+    position: relative;
+    width: 100%;
+    background-color: $color-white;
+    border-radius: 1rem;
+    border: 1.5px solid $color-black;
+    box-shadow: 0px 1px 6px rgba($color-black, 0.15);
+    overflow: hidden;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem 0.75rem 1.5rem;
+      box-shadow: 0px 1px 6px rgba($color-black, 0.1);
+      border-bottom: 1px solid $color-greygreen;
+
+      &__text {
+        flex: 0 1 75%;
+        font-size: 1.6rem;
+        font-weight: 400;
+      }
+
+      &__icon {
+        height: 1.75rem;
+        width: 1.75rem;
+
+        transition: all $menu-transition;
+
+        &:hover {
+          fill: $color-primary;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__item {
+      list-style: none;
+      padding: 1rem 0 1rem 1.5rem;
+
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $menu-hover-color;
+      }
+    }
+
+    // Delete functionality
+    &__del {
+      height: 1.75rem;
+      width: 1.75rem;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: all $menu-transition;
+
+      &:hover {
+        fill: $color-primary;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: $bp-tablet-med) {
+        height: 1.9rem;
+        width: 1.9rem;
+        fill: $color-primary;
+        margin-right: 0.1rem;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    @media only screen and (min-width: $bp-desk) {
+      &__item:hover &__del {
+        transform: translate(-1rem);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  // Display menu on hover if on desktop
+  &:hover > &__panel {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Keep icon hover state when menu is hovered
+.menu:hover > .header__icon {
+  border: $icon-border-width solid var(--menu-hover-outline);
+  background-color: var(--menu-hover-fill);
+}
+
+// Customised scroll on menu dropdowns for long lists
+.scrollableDropdown {
+  max-height: 40rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba($color-primary, 0.8) $color-grey-light-1;
+
+  &::-webkit-scrollbar {
+    width: 1.25rem;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    background-color: $color-grey-light-1;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: rgba($color-primary, 0.8);
+    border: 0.2rem solid $color-grey-light-1;
+  }
+
+  @media only screen and (max-width: $bp-tablet-med) {
+    max-height: 100vh;
+  }
+}
+
+// Shopping list styles
+
+.shoplist {
+  &__aisleTitle {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    background-color: $color-grey-light-3;
+    color: $color-black;
+    padding: 0.5rem 0rem 0.5rem 1.5rem;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 7rem 1fr min-content;
+    column-gap: 1.25rem;
+    align-items: center;
+
+    &:not(:last-child) {
+      border-bottom: 1px dotted $color-grey-dark;
+    }
+  }
+
+  &__text {
+    font-size: 1.5rem;
+  }
+
+  &__quantity {
+    color: $color-primary;
+    justify-self: end;
+    align-self: start;
+  }
+}
+
+// Fave menu styles
+.faves {
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // width: 100%;
+
+    &__link:link,
+    &__link:visited {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    &__figure {
+      flex-shrink: 0;
+      height: 4.75rem;
+      width: 4.75rem;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+    }
+
+    &__img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &__del {
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px dotted $color-greygreen;
+    }
+  }
+
+  &__details {
+    &__title {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    &__author {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: $color-primary;
+    }
+  }
+}
+
+// Mobile faves styling
+@media only screen and (max-width: $bp-tablet-med) {
+  .faves {
+    &__item {
+      padding: 1.25rem 2rem;
+    }
+
+    &__details {
+      &__title {
+        font-size: 1.7rem;
+      }
+      &__author {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+.header__mobSearch {
+  background-color: var(--mobileSearch-bgCol);
+  height: 0;
+  align-items: center;
+  visibility: hidden;
+  transition: all 0.5s;
+
+  &__icon {
+    display: none;
+    transition: all 0.5s;
+
+    @media only screen and (max-width: $bp-tablet-med) {
+      display: flex;
+      grid-column: content-start / span 4;
+    }
+
+    &--hidden {
+      opacity: 0%;
+      visibility: hidden;
+    }
+
+    &--active {
+      border-color: $color-primary;
+      background-color: $color-primary;
+    }
+
+    &__svg--active {
+      fill: $color-white;
+    }
+  }
+
+  &--active {
+    height: 6.5rem;
+    visibility: visible;
+  }
+
+  &__btn {
+    background-color: transparent;
+    margin-left: 1rem;
+  }
+
+  &__form {
+    grid-column: content-start / content-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+    opacity: 0%;
+    visibility: hidden;
+    transition: all 1s;
+
+    &--active {
+      opacity: 100%;
+      visibility: visible;
+    }
+  }
+
+  &__input {
+    background-color: $color-grey-light-1;
+    border-radius: 25px;
+    height: 100%;
+    width: 50%;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: inherit;
+    font-size: 1.6rem;
+    color: inherit;
+  }
+
+  &__controls {
+    display: flex;
+    opacity: 0%;
+    visibility: hidden;
+    transition: all 0.5s;
+
+    &--active {
+      opacity: 100%;
+      visibility: visible;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 3.5rem;
+    border: $icon-border-width solid var(--mobileSearch-iconCol);
+    border-radius: 25px;
+  }
+
+  &__svg {
+    height: 65%;
+    width: 65%;
+    fill: var(--mobileSearch-iconCol);
+
+    &--cross {
+      height: 80%;
+      width: 80%;
+    }
+  }
+}

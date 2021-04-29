@@ -59,6 +59,7 @@ export const ctrlFaves = () => {
 
 // Handle fave deletions
 const delFave = (faveID) => {
+  console.log(faveID, '<<Fave ID in controller');
   state.faves.removeFave(faveID);
   favesView.removeFave(faveID);
 
@@ -68,29 +69,36 @@ const delFave = (faveID) => {
   }
 };
 
-// Add event handler to the header menu faves list to handle deletions from there
-document
-  .getElementById(domStrings.menu__faves)
-  .addEventListener('click', (event) => {
-    // Check to see if a delete button has been clicked
-    if (event.target.closest('.faves__del')) {
-      // It has, so find out which one and proceed
+// Add event handler to desk and mobile faves list to handle deletions from there
+const faveMenus = document.querySelectorAll(domStrings.faves__menu);
 
-      // Check which of the delete buttons has been clicked and grab id
-      const faveToDel = event.target.closest('.faves__item').id;
-
-      // Remove this fave from the state and menu
-      delFave(faveToDel);
-
-      // Then update the fave status on page if the fave we're deleting is the current displayed recipe
-      if (state.recipe.id === faveToDel) {
-        state.recipe.isFave = false;
-        recipeView.renderFaveStatus(false);
-      }
-    } else if (event.target.closest(domStrings.faves__edit)) {
-      console.log('Faves edit button clicked');
-    } else if (event.target.closest(domStrings.faves__clear)) {
-      state.faves.clear();
-      favesView.clear();
-    }
+faveMenus.forEach((faveMenu) => {
+  faveMenu.addEventListener('click', (event) => {
+    addFaveListener(event);
   });
+});
+
+const addFaveListener = (event) => {
+  // Check to see if a delete button has been clicked
+  if (event.target.closest('.faves__item__del')) {
+    // It has, so find out which one and proceed
+    console.log(event.target.closest('.faves__item'));
+
+    // Check which of the delete buttons has been clicked and grab id
+    const faveToDel = event.target.closest('.faves__item').id;
+
+    // Remove this fave from the state and menu
+    delFave(faveToDel);
+
+    // Then update the fave status on page if the fave we're deleting is the current displayed recipe
+    if (state.recipe.id === faveToDel) {
+      state.recipe.isFave = false;
+      recipeView.renderFaveStatus(false);
+    }
+  } else if (event.target.closest(domStrings.faves__clear)) {
+    state.faves.clear();
+    favesView.clear();
+    state.recipe.isFave = false;
+    recipeView.renderFaveStatus(false);
+  }
+};

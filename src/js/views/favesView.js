@@ -17,9 +17,9 @@ import { domStrings } from './base';
 
 export const renderFave = (objFave) => {
   // Get the faves menu in the DOM for both desktop and mobile views
-  const faveList = document.querySelectorAll(domStrings.faves__list);
+  const faveLists = document.querySelectorAll(domStrings.faves__list);
 
-  const htmlFave = `
+  const htmlFave = /*html*/ `
         <li class="menu__dropdown__item faves__item" id="${objFave.id}">
             <a href="recipe.html?rID=${objFave.id}" class="faves__item__link">
                 <figure class="faves__item__figure">
@@ -37,33 +37,43 @@ export const renderFave = (objFave) => {
     `;
 
   // Now add faves for both views
-  faveList.forEach((list) => {
+  faveLists.forEach((list) => {
     list.insertAdjacentHTML('beforeend', htmlFave);
   });
 };
 
 // Remove fave from UI
 export const removeFave = (faveID) => {
-  // First get the element to be removed
-  const faveToDel = document.getElementById(faveID);
-  faveToDel.parentElement.removeChild(faveToDel);
+  // First get the element to be removed (both desktop and mobile)
+  // We need to escape the ID has it's a numeric-only ID.
+  const favesToDel = document.querySelectorAll(`#${CSS.escape(faveID)}`);
+  favesToDel.forEach((faveToDel) => {
+    faveToDel.parentElement.removeChild(faveToDel);
+  });
 };
 
 export const removePlaceholder = () => {
-  if (
-    document.getElementById(domStrings.faves__placeholder).style.display !==
-    'none'
-  ) {
-    document.getElementById(domStrings.faves__placeholder).style.display =
-      'none';
-  }
+  const placeHolders = document.querySelectorAll(domStrings.faves__placeholder);
+
+  placeHolders.forEach((placeHolder) => {
+    if (placeHolder.style.display !== 'none')
+      placeHolder.style.display = 'none';
+  });
 };
 
 export const addPlaceholder = () => {
-  document.getElementById(domStrings.faves__placeholder).style.display = '';
+  const placeHolders = document.querySelectorAll(domStrings.faves__placeholder);
+
+  placeHolders.forEach((placeHolder) => {
+    placeHolder.style.display = '';
+  });
 };
 
 export const clear = () => {
-  document.getElementById(domStrings.faves__list).innerHTML = '';
+  const faveLists = document.querySelectorAll(domStrings.faves__list);
+
+  faveLists.forEach((list) => {
+    list.innerHTML = '';
+  });
   addPlaceholder();
 };

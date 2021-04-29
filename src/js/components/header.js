@@ -70,7 +70,7 @@ class Header extends HTMLElement {
 
             <!-- Fave Dropdown -->
             <div class="menu__panel">
-              <div class="menu__dropdown" id="menu__faves">
+              <div class="menu__dropdown menu__faves" id="menu__faves">
                 <div class="menu__dropdown__header">
                   <p class="menu__dropdown__header__text">My Favourites</p>
                   <svg class="menu__dropdown__header__icon" id="faves__clear">
@@ -171,7 +171,7 @@ class Header extends HTMLElement {
         </form>
       </div>
 
-      <sidepanel-comp id="sidePanel__faves">
+      <sidepanel-comp id="sidePanel__faves" class='menu__faves'>
           <div class="sidePanel__header">
             <p>My Favourites</p>
             <svg class="sidePanel__icon" id="faves__clear">
@@ -181,13 +181,13 @@ class Header extends HTMLElement {
             </svg>
           </div>
 
-          <div id="faves__placeholder">
+          <div id="faves__placeholder" class='sidePanel__placeholder'>
             <p>
               Love a recipe? This could be its new home!
             </p>
           </div>
 
-          <ul id="faves__list"></ul>
+          <ul id="faves__list" class='scrollableDropdown'></ul>
       </sidepanel-comp>
 
       <sidepanel-comp id="sidePanel__shopList">Shopping List</sidepanel-comp>

@@ -28,6 +28,8 @@ class SidePanel extends HTMLElement {
           opacity: 0%;
           visibility: hidden;
           z-index: 50;
+          overflow: auto;
+          overscroll-behavior: contain;
           transition: all 0.5s;
         }
 
@@ -43,16 +45,14 @@ class SidePanel extends HTMLElement {
           height: 100vh;
           width: 50vw;
           z-index: 50;
+          overflow: auto;
+          overscroll-behavior: contain;
           transform: translateX(100%);
           transition: all 1s ease;
         }
 
         :host([show]) #sidePanel {
           transform: translateX(0);
-        }
-
-        #sidePanel__content {
-          padding-top: 5rem;
         }
       </style>
     `;
@@ -75,7 +75,7 @@ class SidePanel extends HTMLElement {
       .addEventListener('click', () => this.hide());
   }
 
-  open(content) {
+  open() {
     if (this.header.getAttribute('data-theme') === 'header-home')
       this.header.setAttribute('data-theme', 'header-home-panel');
 
