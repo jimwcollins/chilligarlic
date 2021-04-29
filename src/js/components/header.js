@@ -102,7 +102,7 @@ class Header extends HTMLElement {
 
             <!-- Shopping List dropdown-->
             <div class="menu__panel">
-              <div class="menu__dropdown" id="menu__shopList">
+              <div class="menu__dropdown menu__shopList" id="menu__shopList">
                 <div class="menu__dropdown__header">
                   <p class="menu__dropdown__header__text">My Shopping List</p>
                   <svg class="menu__dropdown__header__icon" id="shopList__clear">
@@ -190,7 +190,25 @@ class Header extends HTMLElement {
           <ul id="faves__list" class='scrollableDropdown'></ul>
       </sidepanel-comp>
 
-      <sidepanel-comp id="sidePanel__shopList">Shopping List</sidepanel-comp>
+      <sidepanel-comp id="sidePanel__shopList" class='menu__shopList'>
+          <div class="sidePanel__header">
+            <p>My Shopping List</p>
+            <svg class="sidePanel__icon" id="shopList__clear">
+              <use
+                xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"
+              ></use>
+            </svg>
+          </div>
+
+          <div id="shopList__placeholder" class="sidePanel__placeholder">
+            <p>
+              Make your shopping list happy by filling it with lovely
+              ingredients.
+            </p>
+          </div>
+
+          <ul id="shopList__list" class="scrollableDropdown"></ul>
+      </sidepanel-comp>
     </header>
     `;
 
@@ -316,15 +334,23 @@ class Header extends HTMLElement {
     };
 
     // Handle mobile nav buttons
+    // When one is clicked toggle the side panel
+    // Pass button in so we can toggle its appearance from within component
     const mobNavFave = document.getElementById('mobNav__fave');
+    const sidepanelFaves = document.getElementById('sidePanel__faves');
     const mobNavShop = document.getElementById('mobNav__shopList');
+    const sidepanelShopList = document.getElementById('sidePanel__shopList');
 
     mobNavFave.addEventListener('click', () => {
-      document.getElementById('sidePanel__faves').open();
+      if (sidepanelShopList.hasAttribute('show'))
+        sidepanelShopList.toggle(mobNavShop);
+      sidepanelFaves.toggle(mobNavFave);
     });
 
     mobNavShop.addEventListener('click', () => {
-      document.getElementById('sidePanel__shopList').open();
+      if (sidepanelFaves.hasAttribute('show'))
+        sidepanelFaves.toggle(mobNavFave);
+      sidepanelShopList.toggle(mobNavShop);
     });
   }
 }

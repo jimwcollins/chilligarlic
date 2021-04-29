@@ -57,16 +57,13 @@
       fill: var(--menu-icon-svg);
     }
 
-    // Hover effects for header icon if we're on desktop
-    @media only screen and (min-width: $bp-desk-sm) {
-      &:hover {
-        border: $icon-border-width solid var(--menu-hover-outline);
-        background-color: var(--menu-hover-fill);
-      }
+    &--active {
+      border-color: $color-primary;
+      background-color: $color-primary;
     }
 
-    &:hover .header__icon__svg {
-      fill: var(--menu-hover-svg);
+    &__svg--active {
+      fill: $color-white;
     }
   }
 

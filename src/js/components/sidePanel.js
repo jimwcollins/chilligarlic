@@ -72,21 +72,27 @@ class SidePanel extends HTMLElement {
 
     this.shadowRoot
       .getElementById('sidePanel__bg')
-      .addEventListener('click', () => this.hide());
+      .addEventListener('click', () => this.toggle());
   }
 
-  open() {
-    if (this.header.getAttribute('data-theme') === 'header-home')
-      this.header.setAttribute('data-theme', 'header-home-panel');
+  toggle(parentButton) {
+    if (parentButton) this.parentButton = parentButton;
+    this.parentButton.classList.toggle('header__icon--active');
+    this.parentButton.firstElementChild.classList.toggle(
+      'header__icon__svg--active'
+    );
 
-    this.setAttribute('show', '');
-  }
+    if (this.hasAttribute('show')) {
+      if (this.header.getAttribute('data-theme') === 'header-home-panel')
+        this.header.setAttribute('data-theme', 'header-home');
 
-  hide() {
-    if (this.header.getAttribute('data-theme') === 'header-home-panel')
-      this.header.setAttribute('data-theme', 'header-home');
+      this.removeAttribute('show');
+    } else {
+      if (this.header.getAttribute('data-theme') === 'header-home')
+        this.header.setAttribute('data-theme', 'header-home-panel');
 
-    this.removeAttribute('show');
+      this.setAttribute('show', '');
+    }
   }
 }
 

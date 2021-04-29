@@ -134,10 +134,16 @@
   }
 }
 
-// Keep icon hover state when menu is hovered
-.menu:hover > .header__icon {
-  border: $icon-border-width solid var(--menu-hover-outline);
-  background-color: var(--menu-hover-fill);
+// Hover effects for header icon if we're on desktop
+@media only screen and (min-width: $bp-desk) {
+  .menu:hover > .header__icon {
+    border-color: $color-primary;
+    background-color: $color-primary;
+  }
+
+  .menu:hover .header__icon__svg {
+    fill: $color-white;
+  }
 }
 
 // Customised scroll on menu dropdowns for long lists
@@ -294,15 +300,6 @@
     &--hidden {
       opacity: 0%;
       visibility: hidden;
-    }
-
-    &--active {
-      border-color: $color-primary;
-      background-color: $color-primary;
-    }
-
-    &__svg--active {
-      fill: $color-white;
     }
   }
 
