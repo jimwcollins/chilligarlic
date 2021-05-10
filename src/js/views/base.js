@@ -27,7 +27,7 @@ export const domStrings = {
   faves__placeholder: '#faves__placeholder',
 
   // Shopping list
-  menu__shopList: 'menu__shopList',
+  shopList__menu: '.menu__shopList',
   shopList__list: '#shopList__list',
   shopList__edit: '#shopList__edit',
   shopList__clear: '#shopList__clear',

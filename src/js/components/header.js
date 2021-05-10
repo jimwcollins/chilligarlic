@@ -171,7 +171,7 @@ class Header extends HTMLElement {
         </form>
       </div>
 
-      <sidepanel-comp id="sidePanel__faves">
+      <sidepanel-comp id="sidePanel__faves" class="menu__faves">
           <div class="sidePanel__header">
             <p>My Favourites</p>
             <svg class="sidePanel__icon" id="faves__clear">
@@ -190,7 +190,7 @@ class Header extends HTMLElement {
           <ul id="faves__list" class='scrollableDropdown'></ul>
       </sidepanel-comp>
       
-      <sidepanel-comp id="sidePanel__shopList">
+      <sidepanel-comp id="sidePanel__shopList" class="menu__shopList">
           <div class="sidePanel__header">
             <p>My Shopping List</p>
             <svg class="sidePanel__icon" id="shopList__clear">
@@ -285,9 +285,17 @@ class Header extends HTMLElement {
         if (!entry.isIntersecting) {
           header.classList.add('header--scroll');
           headerLogo.classList.add('header__logo__img--scroll');
+
+          panelComps.forEach((panelComp) => {
+            panelComp.setAttribute('scrolled', '');
+          });
         } else {
           header.classList.remove('header--scroll');
           headerLogo.classList.remove('header__logo__img--scroll');
+
+          panelComps.forEach((panelComp) => {
+            panelComp.removeAttribute('scrolled');
+          });
         }
       };
 

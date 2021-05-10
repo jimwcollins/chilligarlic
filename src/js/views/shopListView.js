@@ -66,11 +66,20 @@ export const removePlaceholder = () => {
 };
 
 export const addPlaceholder = () => {
-  document.getElementById(domStrings.shopList__placeholder).style.display =
-    'block';
+  const placeholders = document.querySelectorAll(
+    domStrings.shopList__placeholder
+  );
+
+  placeholders.forEach((placeholder) => {
+    placeholder.style.display = 'block';
+  });
 };
 
 export const clear = () => {
-  document.getElementById(domStrings.shopList__list).innerHTML = '';
-  addPlaceholder();
+  const domShopLists = document.querySelectorAll(domStrings.shopList__list);
+
+  domShopLists.forEach((shopList) => {
+    shopList.innerHTML = '';
+    addPlaceholder();
+  });
 };

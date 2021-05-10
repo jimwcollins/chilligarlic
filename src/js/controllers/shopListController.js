@@ -49,37 +49,43 @@ export const ctrlShopList = () => {
   }
 };
 
-// Listener for shopping list
-document
-  .getElementById(domStrings.menu__shopList)
-  .addEventListener('click', (event) => {
-    if (event.target.closest('.list__del')) {
-      // They have clicked a delete button. Find out which item and delete it
-      const itemToDel = event.target.closest('.shoplist__item');
+// Add event handler to desk and mobile faves list to handle deletions from there
+const listMenus = document.querySelectorAll(domStrings.shopList__menu);
 
-      // Delete from state shopping list and UI. Restore placeholder if last item.
-      // If this deletes the last item for current recipe, update recipe view.
-      const { removeAisle, lastRecipeItemDeleted } = state.shopList.removeItem(
-        itemToDel.dataset.item_id
-      );
-
-      if (lastRecipeItemDeleted) {
-        state.recipe.ingsAdded = false;
-        recipeView.renderListStatus(false);
-      }
-
-      shopListView.removeItem(itemToDel, removeAisle);
-
-      if (state.shopList.list.length === 0) {
-        shopListView.addPlaceholder();
-      }
-    } else if (event.target.closest(domStrings.shopList__clear)) {
-      state.shopList.clear();
-      shopListView.clear();
-
-      if (state.recipe) {
-        state.recipe.ingsAdded = false;
-        recipeView.renderListStatus(false);
-      }
-    }
+listMenus.forEach((listMenu) => {
+  listMenu.addEventListener('click', (event) => {
+    addShoplistListener(event);
   });
+});
+
+const addShoplistListener = (event) => {
+  if (event.target.closest('.list__del')) {
+    // They have clicked a delete button. Find out which item and delete it
+    const itemToDel = event.target.closest('.shoplist__item');
+
+    // Delete from state shopping list and UI. Restore placeholder if last item.
+    // If this deletes the last item for current recipe, update recipe view.
+    const { removeAisle, lastRecipeItemDeleted } = state.shopList.removeItem(
+      itemToDel.dataset.item_id
+    );
+
+    if (lastRecipeItemDeleted) {
+      state.recipe.ingsAdded = false;
+      recipeView.renderListStatus(false);
+    }
+
+    shopListView.removeItem(itemToDel, removeAisle);
+
+    if (state.shopList.list.length === 0) {
+      shopListView.addPlaceholder();
+    }
+  } else if (event.target.closest(domStrings.shopList__clear)) {
+    state.shopList.clear();
+    shopListView.clear();
+
+    if (state.recipe) {
+      state.recipe.ingsAdded = false;
+      recipeView.renderListStatus(false);
+    }
+  }
+};
