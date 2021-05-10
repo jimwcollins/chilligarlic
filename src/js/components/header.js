@@ -171,7 +171,7 @@ class Header extends HTMLElement {
         </form>
       </div>
 
-      <sidepanel-comp id="sidePanel__faves" class='menu__faves'>
+      <sidepanel-comp id="sidePanel__faves">
           <div class="sidePanel__header">
             <p>My Favourites</p>
             <svg class="sidePanel__icon" id="faves__clear">
@@ -189,8 +189,8 @@ class Header extends HTMLElement {
 
           <ul id="faves__list" class='scrollableDropdown'></ul>
       </sidepanel-comp>
-
-      <sidepanel-comp id="sidePanel__shopList" class='menu__shopList'>
+      
+      <sidepanel-comp id="sidePanel__shopList">
           <div class="sidePanel__header">
             <p>My Shopping List</p>
             <svg class="sidePanel__icon" id="shopList__clear">
@@ -219,6 +219,7 @@ class Header extends HTMLElement {
     const headerContainer = document.querySelector('.header-container');
     const header = document.querySelector('.header');
     const headerLogo = document.querySelector('.header__logo__img');
+    const panelComps = document.querySelectorAll('sidepanel-comp');
 
     // Handle home page
     if (this.isHome) {
@@ -230,10 +231,18 @@ class Header extends HTMLElement {
           headerContainer.setAttribute('data-theme', 'header-home');
           header.classList.remove('header--scroll');
           headerLogo.classList.remove('header__logo__img--scroll');
+
+          panelComps.forEach((panelComp) => {
+            panelComp.removeAttribute('scrolled');
+          });
         } else {
           headerContainer.setAttribute('data-theme', 'header-main');
           header.classList.add('header--scroll');
           headerLogo.classList.add('header__logo__img--scroll');
+
+          panelComps.forEach((panelComp) => {
+            panelComp.setAttribute('scrolled', '');
+          });
         }
       };
 

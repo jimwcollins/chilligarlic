@@ -59,7 +59,6 @@ export const ctrlFaves = () => {
 
 // Handle fave deletions
 const delFave = (faveID) => {
-  console.log(faveID, '<<Fave ID in controller');
   state.faves.removeFave(faveID);
   favesView.removeFave(faveID);
 

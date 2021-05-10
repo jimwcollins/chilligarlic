@@ -28,10 +28,10 @@ export const domStrings = {
 
   // Shopping list
   menu__shopList: 'menu__shopList',
-  shopList__list: 'shopList__list',
+  shopList__list: '#shopList__list',
   shopList__edit: '#shopList__edit',
   shopList__clear: '#shopList__clear',
-  shopList__placeholder: 'shopList__placeholder',
+  shopList__placeholder: '#shopList__placeholder',
 
   // Search Page
   searchResultsTitle: '.search-results__title',

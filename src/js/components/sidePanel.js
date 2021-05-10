@@ -12,12 +12,9 @@ class SidePanel extends HTMLElement {
     this.attachShadow({ mode: 'open' });
 
     this.shadowRoot.innerHTML = /*html*/ `
-      <div id="sidePanel__bg">
-      </div>
+      <div id="sidePanel__bg"></div>
       <div id="sidePanel">
-        <div id='sidePanel__content'>
-          <slot></slot>
-        </div>
+        <slot></slot>
       </div>
       <style>
         #sidePanel__bg {
@@ -42,10 +39,11 @@ class SidePanel extends HTMLElement {
           position: fixed;
           background-color: var(--color-white);
           right: 0;
-          height: 100vh;
-          width: 50vw;
+          height: calc(100vh - var(--header-height));
+          display: flex;
+          flex-direction: column;
+          width: 50%;
           z-index: 50;
-          overflow: auto;
           overscroll-behavior: contain;
           transform: translateX(100%);
           transition: all 1s ease;
@@ -54,17 +52,21 @@ class SidePanel extends HTMLElement {
         :host([show]) #sidePanel {
           transform: translateX(0);
         }
+
+        :host([scrolled]) #sidePanel {
+          height: calc(100vh - 10rem);
+        }
       </style>
     `;
 
     this.fave = /*html*/ `
       <p>Faves</p>
-      <ul class="scrollableDropdown" id="faves__list"></ul>
+      <ul id="faves__list"></ul>
     `;
 
     this.shopList = /*html*/ `
       <p>Shopping List</p>
-      <ul class="scrollableDropdown" id="shopList__list"></ul>
+      <ul id="shopList__list"></ul>
     `;
 
     this.panelContent = this.shadowRoot.getElementById('sidePanel__content');

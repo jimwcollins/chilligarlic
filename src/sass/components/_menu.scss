@@ -48,7 +48,10 @@
   // Dropdown menu
   &__dropdown {
     position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    max-height: 40rem;
     background-color: $color-white;
     border-radius: 1rem;
     border: 1.5px solid $color-black;
@@ -148,7 +151,7 @@
 
 // Customised scroll on menu dropdowns for long lists
 .scrollableDropdown {
-  max-height: 40rem;
+  flex: 1;
   overflow: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
@@ -166,10 +169,6 @@
     border-radius: 1rem;
     background: rgba($color-primary, 0.8);
     border: 0.2rem solid $color-grey-light-1;
-  }
-
-  @media only screen and (max-width: $bp-tablet-med) {
-    max-height: 100vh;
   }
 }
 
@@ -212,7 +211,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // width: 100%;
 
     &__link:link,
     &__link:visited {
@@ -263,7 +261,7 @@
   }
 }
 
-// Mobile faves styling
+// Mobile faves/shopping list styling
 @media only screen and (max-width: $bp-tablet-med) {
   .faves {
     &__item {
@@ -277,6 +275,12 @@
       &__author {
         font-size: 1.5rem;
       }
+    }
+  }
+
+  .shoplist {
+    &__item {
+      padding: 1.25rem 2rem;
     }
   }
 }

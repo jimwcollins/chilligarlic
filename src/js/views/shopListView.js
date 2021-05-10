@@ -8,10 +8,12 @@
 import { domStrings } from './base';
 
 export const renderList = (list) => {
-  // Grab the list in the DOM
-  const domShopList = document.getElementById(domStrings.shopList__list);
+  // Grab the list in the DOM for both desktop and mobile views
+  const domShopLists = document.querySelectorAll(domStrings.shopList__list);
 
-  list.forEach((aisleList) => renderAisleList(domShopList, aisleList));
+  domShopLists.forEach((shopList) => {
+    list.forEach((aisleList) => renderAisleList(shopList, aisleList));
+  });
 };
 
 const renderAisleList = (domShopList, aisleList) => {
@@ -23,7 +25,9 @@ const renderAisleList = (domShopList, aisleList) => {
 
   domShopList.insertAdjacentHTML('beforeend', aisleListHtml);
 
-  const domAisleList = document.getElementById(`aisleList__${aisleList.aisle}`);
+  const domAisleList = domShopList.querySelector(
+    `#aisleList__${CSS.escape(aisleList.aisle)}`
+  );
   aisleList.aisleList.forEach((item) => renderItem(domAisleList, item));
 };
 
@@ -52,13 +56,13 @@ export const removeItem = (item, removeAisle) => {
 };
 
 export const removePlaceholder = () => {
-  if (
-    document.getElementById(domStrings.shopList__placeholder).style.display !==
-    'none'
-  ) {
-    document.getElementById(domStrings.shopList__placeholder).style.display =
-      'none';
-  }
+  const placeholders = document.querySelectorAll(
+    domStrings.shopList__placeholder
+  );
+
+  placeholders.forEach((placeholder) => {
+    if (placeholder.display !== 'none') placeholder.style.display = 'none';
+  });
 };
 
 export const addPlaceholder = () => {
