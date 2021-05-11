@@ -18,6 +18,14 @@
   height: 6rem;
   margin-top: 5rem; // Standard space at the top for all pages
 
+  @media only screen and (max-width: $bp-phone) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 12rem;
+    margin-top: 4rem;
+  }
+
   &__nav {
     display: grid;
     grid-template-columns: repeat(4, min-content);
@@ -50,19 +58,39 @@
     justify-self: center;
     height: 4rem;
     margin: 0 2rem;
+
+    @media only screen and (max-width: $bp-phone) {
+      margin: 0.5rem;
+    }
   }
 
   &__text {
     font-size: 1.5rem;
 
-    &--left {
+    &--right {
+      @extend .footer__text;
+      justify-self: flex-start;
+    }
+
+    &--main {
       @extend .footer__text;
       justify-self: flex-end;
     }
 
-    &--right {
+    &--mob {
       @extend .footer__text;
-      justify-self: flex-start;
+      display: none;
+    }
+
+    @media only screen and (max-width: $bp-phone) {
+      &--main {
+        display: none;
+      }
+
+      &--mob {
+        display: block;
+        margin-bottom: 0.2rem;
+      }
     }
   }
 }

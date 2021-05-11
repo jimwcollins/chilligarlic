@@ -95,8 +95,33 @@
 
 .about {
   grid-column: col-start 3 / span 11;
-
   padding: 7rem 0;
+
+  @media only screen and (max-width: $bp-tablet) {
+    grid-column: col-start 2 / span 13;
+  }
+
+  @media only screen and (max-width: $bp-phone) {
+    grid-column: content-start / content-end;
+    padding: 6rem 0;
+  }
+
+  &__head {
+    &--main {
+      display: block;
+
+      @media only screen and (max-width: $bp-phone) {
+        display: none;
+      }
+    }
+    &--mob {
+      display: none;
+
+      @media only screen and (max-width: $bp-phone) {
+        display: block;
+      }
+    }
+  }
 }
 
 .gallery {
@@ -105,7 +130,7 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(10, 2vw);
-  grid-gap: 2rem;
+  gap: 2rem;
   padding: 2rem;
 
   &__figure {
@@ -152,5 +177,25 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+  }
+
+  &--mob {
+    display: none;
+  }
+
+  @media only screen and (max-width: $bp-tablet) {
+    gap: 1.25rem;
+    padding: 1rem 2rem;
+  }
+
+  @media only screen and (max-width: $bp-phone) {
+    &--main {
+      display: none;
+    }
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(10, 3vw);
+    gap: 1rem;
   }
 }

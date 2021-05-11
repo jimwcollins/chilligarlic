@@ -9,7 +9,7 @@ class Footer extends HTMLElement {
   connectedCallback() {
     this.innerHTML = /* html */ `
       <footer class="footer">
-        <p class="footer__text--left">
+        <p class="footer__text--left footer__text--main">
           Designed and coded by James Collins © 2021
         </p>
 
@@ -18,6 +18,10 @@ class Footer extends HTMLElement {
           alt=""
           class="footer__logo"
         />
+
+        <p class="footer__text--mob">
+        Designed and coded by James Collins © 2021
+      </p>
 
         <p class="footer__text--right">
           Powered by Spoonacular API
