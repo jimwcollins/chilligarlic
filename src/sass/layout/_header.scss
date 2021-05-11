@@ -11,6 +11,11 @@
   width: 3.5rem;
   border: $icon-border-width solid var(--menu-icon-circle);
   border-radius: 25px;
+
+  @media only screen and (max-width: $bp-phone) {
+    height: 3rem;
+    width: 3rem;
+  }
 }
 
 // Classes
@@ -93,7 +98,7 @@
         visibility: hidden;
       }
 
-      @media only screen and (max-width: $bp-tablet-med) {
+      @media only screen and (max-width: $bp-tablet-lg) {
         display: none;
       }
     }
@@ -210,11 +215,23 @@
     grid-column: 8 / span 3;
     justify-self: center;
 
+    @media only screen and (max-width: $bp-phone) {
+      grid-column: 4 / span 3;
+    }
+
     &__img {
       vertical-align: middle;
       height: var(--header-logo-height);
 
       transition: all 1s;
+
+      @media only screen and (max-width: $bp-phone) {
+        height: 7.75rem;
+      }
+
+      &--scroll {
+        height: 7.25rem;
+      }
     }
   }
 
@@ -226,7 +243,7 @@
     grid-template-columns: repeat(2, min-content);
     gap: 4rem;
 
-    @media only screen and (max-width: $bp-tablet-med) {
+    @media only screen and (max-width: $bp-tablet-lg) {
       display: none;
     }
   }
@@ -237,10 +254,14 @@
 
     display: none;
 
-    @media only screen and (max-width: $bp-tablet-med) {
+    @media only screen and (max-width: $bp-tablet-lg) {
       display: grid;
       grid-template-columns: repeat(2, min-content);
       gap: 4rem;
+    }
+
+    @media only screen and (max-width: $bp-phone) {
+      gap: 1.5rem;
     }
   }
 
@@ -255,9 +276,9 @@
       display: none;
       transition: all 0.5s;
 
-      @media only screen and (max-width: $bp-tablet-med) {
+      @media only screen and (max-width: $bp-tablet-lg) {
         display: flex;
-        grid-column: content-start / span 4;
+        grid-column: content-start;
       }
 
       &--hidden {
@@ -269,11 +290,10 @@
     &--active {
       height: 6.5rem;
       visibility: visible;
-    }
 
-    &__btn {
-      background-color: transparent;
-      margin-left: 1rem;
+      @media only screen and (max-width: $bp-phone) {
+        height: 5.5rem;
+      }
     }
 
     &__form {
@@ -290,6 +310,10 @@
         opacity: 100%;
         visibility: visible;
       }
+
+      @media only screen and (max-width: $bp-phone) {
+        height: 3rem;
+      }
     }
 
     &__input {
@@ -302,6 +326,10 @@
       font-family: inherit;
       font-size: 1.6rem;
       color: inherit;
+
+      @media only screen and (max-width: $bp-phone) {
+        width: 70%;
+      }
     }
 
     &__controls {
@@ -317,13 +345,13 @@
     }
 
     &__btn {
+      @include header-icon-style;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 3.5rem;
-      width: 3.5rem;
-      border: $icon-border-width solid var(--mobileSearch-iconCol);
-      border-radius: 25px;
+      border-color: var(--mobileSearch-iconCol);
+      margin-left: 1rem;
+      background-color: transparent;
     }
 
     &__svg {
@@ -341,10 +369,6 @@
   // Classes for header upon scroll
   &--scroll {
     height: 10rem;
-  }
-
-  &__logo__img--scroll {
-    height: 7.25rem;
   }
 
   // Classes for header when mobile sidepanel open

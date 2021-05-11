@@ -111,7 +111,7 @@
         cursor: pointer;
       }
 
-      @media only screen and (max-width: $bp-tablet-med) {
+      @media only screen and (max-width: $bp-tablet-lg) {
         height: 1.9rem;
         width: 1.9rem;
         fill: $color-primary;
@@ -262,7 +262,7 @@
 }
 
 // Mobile faves/shopping list styling
-@media only screen and (max-width: $bp-tablet-med) {
+@media only screen and (max-width: $bp-tablet-lg) {
   .faves {
     &__item {
       padding: 1.25rem 2rem;
