@@ -99,7 +99,8 @@ export default class ShopList {
     for (let i = this.list.length - 1; i >= 0; i--) {
       const aisle = this.list[i];
       const indexToDel = aisle.aisleList.findIndex((item) => item.id === id);
-      let removeAisle;
+      let removeAisle = false;
+      let lastRecipeItemDeleted = false;
 
       if (indexToDel !== -1) {
         const item = aisle.aisleList.find((item) => item.id === id);
@@ -116,9 +117,10 @@ export default class ShopList {
         // Return object indicating if this is last item on list for current recipe
         // and if we need to remove parent list in UI
         if (state.recipe && state.recipe.id === item.recipeID) {
-          const lastRecipeItemDeleted = !this.ingsAdded(state.recipe.id);
-          return { removeAisle, lastRecipeItemDeleted };
+          lastRecipeItemDeleted = !this.ingsAdded(state.recipe.id);
         }
+
+        return { removeAisle, lastRecipeItemDeleted };
       }
     }
   }
