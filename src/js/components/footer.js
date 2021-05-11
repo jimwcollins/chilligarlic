@@ -8,21 +8,10 @@
 class Footer extends HTMLElement {
   connectedCallback() {
     this.innerHTML = /* html */ `
-        <footer class="footer">
-        <ul class="footer__nav">
-          <li class="footer__nav__item">
-            <a href="" class="footer__nav__link">Contact</a>
-          </li>
-          <li class="footer__nav__item">
-            <a href="" class="footer__nav__link">Disclaimer</a>
-          </li>
-          <li class="footer__nav__item">
-            <a href="" class="footer__nav__link">Privacy</a>
-          </li>
-          <li class="footer__nav__item">
-            <a href="" class="footer__nav__link">Cookies</a>
-          </li>
-        </ul>
+      <footer class="footer">
+        <p class="footer__text--left">
+          Designed and coded by James Collins © 2021
+        </p>
 
         <img
           src="img/Logo/Chill_Logo_Small_Red.png"
@@ -30,8 +19,8 @@ class Footer extends HTMLElement {
           class="footer__logo"
         />
 
-        <p class="footer__text">
-          Designed and coded by James Collins © 2020
+        <p class="footer__text--right">
+          Powered by Spoonacular API
         </p>
       </footer>
     `;

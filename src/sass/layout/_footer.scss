@@ -53,8 +53,16 @@
   }
 
   &__text {
-    justify-self: flex-start;
-
     font-size: 1.5rem;
+
+    &--left {
+      @extend .footer__text;
+      justify-self: flex-end;
+    }
+
+    &--right {
+      @extend .footer__text;
+      justify-self: flex-start;
+    }
   }
 }
