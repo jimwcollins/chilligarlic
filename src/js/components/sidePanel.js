@@ -49,6 +49,12 @@ class SidePanel extends HTMLElement {
           transition: all 1s ease;
         }
 
+        @media only screen and (max-width: 414px) {
+          #sidePanel {
+            width: 100%;
+          }
+        }
+
         :host([show]) #sidePanel {
           transform: translateX(0);
         }
