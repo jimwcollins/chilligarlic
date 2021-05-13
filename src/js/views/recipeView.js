@@ -52,11 +52,8 @@ export const renderRecipe = (recipe) => {
 
   const recipeImage = document.querySelector(domStrings.image__hero);
 
-  if (recipe.imageUrl)
-    recipeImage.style.backgroundImage = `url(${recipe.imageUrl})`;
-  else
-    recipeImage.style.backgroundImage =
-      'url("/img/Recipe/Recipe_placeholder.jpg")';
+  if (recipe.imageUrl) recipeImage.setAttribute('src', recipe.imageUrl);
+  else recipeImage.style.src = 'url("/img/Recipe/Recipe_placeholder.jpg")';
 
   document
     .getElementById(domStrings.recipeTime)

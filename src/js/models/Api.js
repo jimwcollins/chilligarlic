@@ -37,7 +37,5 @@ export const fetchRecipe = async (recipeId) => {
     }
   );
 
-  console.log(recipe);
-
   return recipe;
 };

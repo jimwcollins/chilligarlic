@@ -43,7 +43,7 @@ export default class Recipe {
       // Now set the recipe properties from this data
       this.title = recipe.title;
       this.author = recipe.sourceName;
-      this.imageUrl = recipe.image;
+      this.imageUrl = `https://spoonacular.com/recipeImages/${this.id}-636x393.${recipe.imageType}`;
       this.time = recipe.readyInMinutes;
       this.servings = recipe.servings;
       this.ingredients = this.parseIngredients(recipe.extendedIngredients);
