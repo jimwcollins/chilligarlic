@@ -43,12 +43,17 @@ export default class Recipe {
       // Now set the recipe properties from this data
       this.title = recipe.title;
       this.author = recipe.sourceName;
-      this.imageUrl = `https://spoonacular.com/recipeImages/${this.id}-636x393.${recipe.imageType}`;
       this.time = recipe.readyInMinutes;
       this.servings = recipe.servings;
       this.ingredients = this.parseIngredients(recipe.extendedIngredients);
       this.ingsAdded = false;
       this.instructions = this.parseInstructions(recipe.instructions);
+
+      if (recipe.image) {
+        this.imageUrl = `https://spoonacular.com/recipeImages/${this.id}-636x393.${recipe.imageType}`;
+      } else {
+        this.imageUrl = '/img/Recipe/Recipe_placeholder.jpg';
+      }
     } catch (error) {
       alert(error);
       console.log(error);

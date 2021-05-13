@@ -24,6 +24,14 @@
       minmax(1rem, 1fr) [full-end];
   }
 
+  &__title {
+    font-size: 3.75rem;
+
+    @media only screen and (max-width: $bp-phone) {
+      font-size: 3rem;
+    }
+  }
+
   &__grid {
     // Position
     grid-column: content-start / content-end;

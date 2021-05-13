@@ -16,6 +16,11 @@
     height: 3rem;
     width: 3rem;
   }
+
+  @media only screen and (max-width: $bp-phone-sm) {
+    height: 2.8rem;
+    width: 2.8rem;
+  }
 }
 
 // Classes
@@ -146,8 +151,12 @@
     &__form:hover,
     &__form:focus-within {
       background-color: var(--color-white);
-      width: 25rem;
+      width: 30rem;
       border-color: var(--menu-hover-outline);
+
+      @media only screen and (min-width: $bp-desk-mid) {
+        width: 33rem;
+      }
     }
 
     // On menu hover, expand the input field and increase its opacity
@@ -229,8 +238,16 @@
         height: 7.75rem;
       }
 
+      @media only screen and (max-width: $bp-phone-sm) {
+        height: 6.75rem;
+      }
+
       &--scroll {
         height: 7.25rem;
+
+        @media only screen and (max-width: $bp-phone-sm) {
+          height: 6.75rem;
+        }
       }
     }
   }
@@ -262,6 +279,10 @@
 
     @media only screen and (max-width: $bp-phone) {
       gap: 1.5rem;
+    }
+
+    @media only screen and (max-width: $bp-phone-sm) {
+      gap: 1rem;
     }
   }
 

@@ -51,9 +51,7 @@ export const renderRecipe = (recipe) => {
     .insertAdjacentHTML('beforeend', recipe.author);
 
   const recipeImage = document.querySelector(domStrings.image__hero);
-
-  if (recipe.imageUrl) recipeImage.setAttribute('src', recipe.imageUrl);
-  else recipeImage.style.src = 'url("/img/Recipe/Recipe_placeholder.jpg")';
+  recipeImage.setAttribute('src', recipe.imageUrl);
 
   document
     .getElementById(domStrings.recipeTime)
