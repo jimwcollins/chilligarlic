@@ -29,7 +29,7 @@
     [content-end] minmax(13rem, 1fr) [full-end];
   column-gap: 1.5rem;
 
-  // Tablet break-points
+  // Mobile break-points
   @media only screen and (max-width: $bp-tablet-lg) {
     grid-template-columns:
       [full-start] minmax(7rem, 1fr) [content-start] repeat(
@@ -50,10 +50,10 @@
 
   @media only screen and (max-width: $bp-phone) {
     grid-template-columns:
-      [full-start] minmax(2rem, 1fr) [content-start] repeat(
+      [full-start] minmax(3.5rem, 1fr) [content-start] repeat(
         7,
         [col-start] minmax(0.35rem, 5rem) [col-end]
       )
-      [content-end] minmax(2rem, 1fr) [full-end];
+      [content-end] minmax(3.5rem, 1fr) [full-end];
   }
 }

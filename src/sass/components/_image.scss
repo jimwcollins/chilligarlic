@@ -6,12 +6,19 @@
 .image {
   &__hero {
     // Position
-    grid-column: full-start / full-end;
+    grid-column: content-start / content-end;
 
     // Style
     background-size: cover;
-    background-attachment: fixed;
+    background-position: center;
+    // background-attachment: fixed;
     background-color: $color-white;
     height: 55rem;
+    margin: 1rem 0;
+
+    @media only screen and (max-width: $bp-tablet-lg) {
+      grid-column: full-start / full-end;
+      height: 45rem;
+    }
   }
 }

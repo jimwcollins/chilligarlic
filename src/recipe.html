@@ -27,127 +27,241 @@
     <!-- Recipe -->
     <main class="recipe grid">
       <div class="heading recipe-heading">
-        <h1 class="heading--main recipe-heading__title" id="recipe__title"></h1>
-        <h2 class="recipe-heading__author" id="recipe__author"></h2>
+        <h1 class="heading--main recipe-heading__title" id="recipe__title">
+          <!-- Salt and Pepper steak -->
+        </h1>
+        <h2 class="recipe-heading__author" id="recipe__author">
+          <!-- Test Recipe -->
+        </h2>
       </div>
 
       <!-- Recipe hero image -->
       <div class="image__hero"></div>
 
-      <!-- Recipe sidebar -->
-      <section class="recipe-info">
-        <!-- Recipe details -->
-        <div class="recipe-info__box recipe-details">
-          <h3 class="heading--subhead">Let's plan!</h3>
+      <section class="recipe__main grid">
+        <!-- Mobile link to method-->
+        <button class="recipe__mobNav recipe__mobNav--plan">
+          <svg class="recipe__mobNav__icon">
+            <use
+              xlink:href="img/Chilli_Icons_Sprite.svg#icon-chevron-left"
+            ></use>
+          </svg>
+          <p class="recipe__mobNav__text">Let's&nbsp;&nbsp;Plan!</p>
+        </button>
 
-          <!-- Recipe time -->
-          <div class="recipe-info__item">
-            <figure class="recipe-info__item__icon recipe-details__icon">
-              <svg class="recipe-info__item__svg recipe-details__svg">
-                <use
-                  xlink:href="img/Chilli_Icons_Sprite.svg#icon-clockhands"
-                ></use>
-              </svg>
-            </figure>
-            <p class="recipe-info__item__text" id="recipe__time"></p>
+        <button class="recipe__mobNav recipe__mobNav--visible">
+          <svg class="recipe__mobNav__icon">
+            <use
+              xlink:href="img/Chilli_Icons_Sprite.svg#icon-chevron-right"
+            ></use>
+          </svg>
+          <p class="recipe__mobNav__text">Let's&nbsp;&nbsp;Cook!</p>
+        </button>
+
+        <!-- Recipe sidebar -->
+        <section class="recipe-info recipe-info--mobVisible">
+          <!-- Recipe details -->
+          <div class="recipe-info__box recipe-details">
+            <h3 class="heading--subhead">Let's plan!</h3>
+
+            <!-- Recipe time -->
+            <div class="recipe-info__item">
+              <figure class="recipe-info__item__icon recipe-details__icon">
+                <svg class="recipe-info__item__svg recipe-details__svg">
+                  <use
+                    xlink:href="img/Chilli_Icons_Sprite.svg#icon-clockhands"
+                  ></use>
+                </svg>
+              </figure>
+              <p class="recipe-info__item__text" id="recipe__time">
+                <!-- 45 minutes -->
+              </p>
+            </div>
+
+            <!-- Recipe Servings -->
+            <div class="recipe-info__item">
+              <figure
+                class="recipe-info__item__icon--user recipe-details__icon"
+              >
+                <svg class="recipe-info__item__svg--user recipe-details__svg">
+                  <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-user"></use>
+                </svg>
+              </figure>
+              <p class="recipe-info__item__text" id="recipe__servings">
+                <!-- 2 servings -->
+              </p>
+              <div class="recipe-details__servings">
+                <svg class="recipe-details__servings__svg btn-serveDec">
+                  <use
+                    xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-minus"
+                  ></use>
+                </svg>
+                <svg class="recipe-details__servings__svg btn-serveInc">
+                  <use
+                    xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-plus"
+                  ></use>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Recipe Fave button -->
+            <div class="recipe-info__item faves">
+              <figure class="recipe-info__item__icon faves__icon">
+                <svg class="recipe-info__item__svg faves__svg">
+                  <use
+                    xlink:href="img/Chilli_Icons_Sprite.svg#icon-heart"
+                  ></use>
+                </svg>
+              </figure>
+              <div class="faves__nonFaveText">
+                <p
+                  class="
+                    recipe-info__item__text
+                    faves__text faves__text--visible
+                  "
+                >
+                  Love it?
+                </p>
+                <p class="recipe-info__item__text faves__text">
+                  Add it to your favourites!
+                </p>
+              </div>
+              <div class="faves__faveText">
+                <p
+                  class="
+                    recipe-info__item__text
+                    faves__text faves__text--visible
+                  "
+                >
+                  It's your favourite!
+                </p>
+                <p class="recipe-info__item__text faves__text">
+                  Remove from favourites
+                </p>
+              </div>
+            </div>
           </div>
 
-          <!-- Recipe Servings -->
-          <div class="recipe-info__item">
-            <figure class="recipe-info__item__icon--user recipe-details__icon">
-              <svg class="recipe-info__item__svg--user recipe-details__svg">
-                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-user"></use>
-              </svg>
-            </figure>
-            <p class="recipe-info__item__text" id="recipe__servings"></p>
-            <div class="recipe-details__servings">
-              <svg class="recipe-details__servings__svg btn-serveDec">
-                <use
-                  xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-minus"
-                ></use>
-              </svg>
-              <svg class="recipe-details__servings__svg btn-serveInc">
-                <use
-                  xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-plus"
-                ></use>
-              </svg>
+          <!-- Recipe Ingredients -->
+          <div class="recipe-info__box ingredients">
+            <h3 class="heading--subhead">Let's shop!</h3>
+
+            <ul class="ingredients__list" id="ingredients">
+              <!-- <li>
+                <span class="ingredients__list__quantity">400</span> g beef
+                steak
+              </li>
+              <li>
+                <span class="ingredients__list__quantity">2</span> tbsp butter
+              </li>
+              <li>
+                <span class="ingredients__list__quantity">2</span> tbs capers
+              </li>
+              <li>
+                <span class="ingredients__list__quantity">177</span> ml dry
+                white wine
+              </li>
+              <li>
+                <span class="ingredients__list__quantity">237</span> ml flour
+              </li>
+              <li>
+                <span class="ingredients__list__quantity">2</span> large garlic
+                cloves
+              </li>
+              <li>
+                <span class="ingredients__list__quantity">0.25</span> tsp black
+                pepper
+              </li> -->
+            </ul>
+
+            <div class="recipe-info__item">
+              <figure class="recipe-info__item__icon ingredients__icon">
+                <svg class="recipe-info__item__svg ingredients__svg">
+                  <use
+                    xlink:href="img/Chilli_Icons_Sprite.svg#icon-list2"
+                  ></use>
+                </svg>
+              </figure>
+
+              <!-- Add to list -->
+              <div class="ingredients__nonListTextContainer">
+                <p
+                  class="
+                    recipe-info__item__text
+                    ingredients__listText ingredients__listText--visible
+                  "
+                >
+                  Add to list
+                </p>
+                <p class="recipe-info__item__text ingredients__listText">
+                  Add to shopping list
+                </p>
+              </div>
+              <div class="ingredients__listTextContainer">
+                <p
+                  class="
+                    recipe-info__item__text
+                    ingredients__listText ingredients__listText--visible
+                  "
+                >
+                  On shopping list
+                </p>
+                <p class="recipe-info__item__text ingredients__listText">
+                  Remove from shopping list
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <!-- Recipe Fave button -->
-          <div class="recipe-info__item faves">
-            <figure class="recipe-info__item__icon faves__icon">
-              <svg class="recipe-info__item__svg faves__svg">
-                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-heart"></use>
-              </svg>
-            </figure>
-            <div class="faves__nonFaveText">
-              <p
-                class="recipe-info__item__text faves__text faves__text--visible"
+        <!-- Recipe method-->
+        <section class="method">
+          <h3 class="heading--subhead">Let's cook!</h3>
+          <ol class="method__steps">
+            <!-- <li class="method__step">
+              <span class="method__step__num">1</span>
+              <span class="method__step__text"
+                >Flatten the steaks lightly with a meat mallet.</span
               >
-                Love it?
-              </p>
-              <p class="recipe-info__item__text faves__text">
-                Add it to your favourites!
-              </p>
-            </div>
-            <div class="faves__faveText">
-              <p
-                class="recipe-info__item__text faves__text faves__text--visible"
+            </li>
+            <li class="method__step">
+              <span class="method__step__num">2</span>
+              <span class="method__step__text"
+                >Combine flour, salt and pepper, dip steaks into the mixture,
+                coating both sides.</span
               >
-                It's your favourite!
-              </p>
-              <p class="recipe-info__item__text faves__text">
-                Remove from favourites
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Recipe Ingredients -->
-        <div class="recipe-info__box ingredients">
-          <h3 class="heading--subhead">Let's shop!</h3>
-
-          <ul class="ingredients__list" id="ingredients"></ul>
-
-          <div class="recipe-info__item">
-            <figure class="recipe-info__item__icon ingredients__icon">
-              <svg class="recipe-info__item__svg ingredients__svg">
-                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-list2"></use>
-              </svg>
-            </figure>
-            <div class="ingredients__nonListTextContainer">
-              <p
-                class="recipe-info__item__text ingredients__listText ingredients__listText--visible"
+            </li>
+            <li class="method__step">
+              <span class="method__step__num">3</span>
+              <span class="method__step__text"
+                >Saut the steaks in a hot mixture of butter and olive oil over
+                medium heat, about 4 minutes on each side. Remove from the pan
+                and set aside.</span
               >
-                Add to list?
-              </p>
-              <p class="recipe-info__item__text ingredients__listText">
-                Add to shopping list
-              </p>
-            </div>
-            <div class="ingredients__listTextContainer">
-              <p
-                class="recipe-info__item__text ingredients__listText ingredients__listText--visible"
+            </li>
+            <li class="method__step">
+              <span class="method__step__num">4</span>
+              <span class="method__step__text"
+                >Saut the garlic in the same fat for about 1 minute,
+                stirring.</span
               >
-                Added to shopping list
-              </p>
-              <p class="recipe-info__item__text ingredients__listText">
-                Remove from shopping list
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="summary">
-        <p class="recipe-summary"></p>
-      </section>
-
-      <section class="method">
-        <h3 class="heading--subhead">Let's cook!</h3>
-
-        <ol class="method__steps"></ol>
+            </li>
+            <li class="method__step">
+              <span class="method__step__num">5</span>
+              <span class="method__step__text"
+                >Add the wine and lemon juice, stir and simmer for 5 minutes to
+                slightly reduce the liquid.</span
+              >
+            </li>
+            <li class="method__step">
+              <span class="method__step__num">6</span>
+              <span class="method__step__text"
+                >Add capers, stir. Return the steaks to the pan, cover and
+                simmer over low heat for 4 minutes.</span
+              >
+            </li> -->
+          </ol>
+        </section>
       </section>
     </main>
 

@@ -12,22 +12,18 @@ import { ctrlFaves } from './favesController';
 import { ctrlShopList } from './shopListController';
 
 export const ctrlRecipe = async () => {
-  // 0. Add recipe event listeners
+  // // 0. Add recipe event listeners
   ctrlAddRecipeListeners();
 
   // Get params and set recipe ID and return status
   const { recipeID } = recipeView.getRecipeParams();
-
   if (recipeID) {
     state.recipe = new Recipe(recipeID);
-
     try {
       await state.recipe.getRecipe();
-
       // Determine if recipe is a fave or added to shopping list
       if (state.faves.isFave(recipeID)) state.recipe.isFave = true;
       if (state.shopList.ingsAdded(recipeID)) state.recipe.ingsAdded = true;
-
       // Render to UI
       recipeView.renderRecipe(state.recipe);
     } catch (error) {
@@ -122,4 +118,26 @@ const ctrlAddRecipeListeners = () => {
       el.classList.toggle('ingredients__listText--visible')
     );
   });
+
+  // Handle mobile recipe nav
+  const mobNavs = document.querySelectorAll('.recipe__mobNav');
+  console.log(mobNavs);
+
+  if (mobNavs) {
+    mobNavs.forEach((mobNav) => {
+      mobNav.addEventListener('click', () => {
+        document
+          .querySelector('.recipe-info')
+          .classList.toggle('recipe-info--mobVisible');
+
+        document
+          .querySelector('.method')
+          .classList.toggle('method--mobVisible');
+
+        mobNavs.forEach((mobNav) => {
+          mobNav.classList.toggle('recipe__mobNav--visible');
+        });
+      });
+    });
+  }
 };
