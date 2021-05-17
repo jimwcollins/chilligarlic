@@ -5,6 +5,9 @@
  *
  ***************************/
 
+import headerLogoImg from '../../img/Logo/Chill_Logo_Red.png';
+import iconsSvg from '../../img/Chilli_Icons_Sprite.svg';
+
 class Header extends HTMLElement {
   constructor() {
     super();
@@ -36,7 +39,7 @@ class Header extends HTMLElement {
           <button class="header__search__button" type="button">
             <svg class="header__search__icon">
               <use
-                xlink:href="img/Chilli_Icons_Sprite.svg#icon-magnifying-glass"
+                xlink:href=${iconsSvg}#icon-magnifying-glass
               ></use>
             </svg>
           </button>
@@ -45,14 +48,13 @@ class Header extends HTMLElement {
         <!-- Mobile-only search button -->
         <figure class="header__icon header__mobSearch__icon">
           <svg class="header__icon__svg header__mobSearch__icon__svg">
-            <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-magnifying-glass"></use>
+            <use xlink:href=${iconsSvg}#icon-magnifying-glass></use>
           </svg>
         </figure>
 
-
         <!-- Logo -->
         <a href="/" class="header__logo"><img
-            src="img/Logo/Chill_Logo_Red.png"
+            src=${headerLogoImg}
             alt=""
             class="header__logo__img"
         /></a>
@@ -64,7 +66,7 @@ class Header extends HTMLElement {
             <!-- Fave Icon -->
             <figure class="header__icon">
               <svg class="header__icon__svg">
-                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-heart"></use>
+                <use xlink:href=${iconsSvg}#icon-heart></use>
               </svg>
             </figure>
 
@@ -75,7 +77,7 @@ class Header extends HTMLElement {
                   <p class="menu__dropdown__header__text">My Favourites</p>
                   <svg class="menu__dropdown__header__icon" id="faves__clear">
                     <use
-                      xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"
+                      xlink:href=${iconsSvg}#icon-circle-with-cross
                     ></use>
                   </svg>
                 </div>
@@ -96,7 +98,7 @@ class Header extends HTMLElement {
             <!-- Shopping List icon-->
             <figure class="header__icon">
               <svg class="header__icon__svg">
-                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-list2"></use>
+                <use xlink:href=${iconsSvg}#icon-list2></use>
               </svg>
             </figure>
 
@@ -107,7 +109,7 @@ class Header extends HTMLElement {
                   <p class="menu__dropdown__header__text">My Shopping List</p>
                   <svg class="menu__dropdown__header__icon" id="shopList__clear">
                     <use
-                      xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"
+                      xlink:href=${iconsSvg}#icon-circle-with-cross
                     ></use>
                   </svg>
                 </div>
@@ -128,12 +130,12 @@ class Header extends HTMLElement {
         <nav class="header__mobNav">
           <figure class="header__icon" id='mobNav__fave'>
             <svg class="header__icon__svg">
-              <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-heart"></use>
+              <use xlink:href=${iconsSvg}#icon-heart></use>
             </svg>
           </figure>
           <figure class="header__icon" id='mobNav__shopList'>
           <svg class="header__icon__svg">
-            <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-list2"></use>
+            <use xlink:href=${iconsSvg}#icon-list2></use>
           </svg>
         </figure>
         </nav>
@@ -159,12 +161,12 @@ class Header extends HTMLElement {
           <div class="header__mobSearch__controls">          
             <button class="header__mobSearch__btn" id="mobSearch__clear" type="button">
               <svg class="header__mobSearch__svg header__mobSearch__svg--cross">
-                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-cross"></use>
+                <use xlink:href=${iconsSvg}#icon-cross></use>
               </svg>
             </button>
             <button class="header__mobSearch__btn" type="submit">
               <svg class="header__mobSearch__svg">
-                <use xlink:href="img/Chilli_Icons_Sprite.svg#icon-magnifying-glass"></use>
+                <use xlink:href=${iconsSvg}#icon-magnifying-glass></use>
               </svg>
             </button>
           </div>
@@ -176,7 +178,7 @@ class Header extends HTMLElement {
             <p>My Favourites</p>
             <svg class="sidePanel__icon" id="faves__clear">
               <use
-                xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"
+                xlink:href=${iconsSvg}#icon-circle-with-cross
               ></use>
             </svg>
           </div>
@@ -195,7 +197,7 @@ class Header extends HTMLElement {
             <p>My Shopping List</p>
             <svg class="sidePanel__icon" id="shopList__clear">
               <use
-                xlink:href="img/Chilli_Icons_Sprite.svg#icon-circle-with-cross"
+                xlink:href=${iconsSvg}#icon-circle-with-cross
               ></use>
             </svg>
           </div>

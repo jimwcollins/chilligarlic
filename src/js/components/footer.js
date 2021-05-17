@@ -5,6 +5,8 @@
  *
  ***************************/
 
+import footerLogo from '../../img/Logo/Chill_Logo_Small_Red.png';
+
 class Footer extends HTMLElement {
   connectedCallback() {
     this.innerHTML = /* html */ `
@@ -14,7 +16,7 @@ class Footer extends HTMLElement {
         </p>
 
         <img
-          src="img/Logo/Chill_Logo_Small_Red.png"
+          src=${footerLogo}
           alt=""
           class="footer__logo"
         />

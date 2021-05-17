@@ -46,8 +46,8 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: '[name].[hash].[ext]', // Specify output format, including hash for cache busting
-            outputPath: 'img', // Specify directory for images
+            name: '[path][name].[hash].[ext]', // Specify output format, including hash for cache busting
+            context: 'src',
           },
         },
       },

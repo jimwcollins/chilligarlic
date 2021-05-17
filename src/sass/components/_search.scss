@@ -38,6 +38,12 @@
   &__icon {
     height: 2rem;
     width: 2rem;
-    fill: $color-primary;
+    fill: rgba($color-primary, 0.5);
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+  &__button:hover > &__icon {
+    fill: rgba($color-primary, 1);
   }
 }
