@@ -10,7 +10,10 @@ import * as searchView from '../views/searchView';
 import Search from '../models/Search';
 
 // Handle the search
-export const ctrlSearch = async () => {
+const ctrlSearch = async () => {
+  console.log('In search controller');
+  console.log(state);
+
   // Get search input (from url)
   const query = searchView.getSearchInput();
 
@@ -81,3 +84,5 @@ const ctrlFetchMoreResults = async () => {
     state.search.page
   );
 };
+
+ctrlSearch();

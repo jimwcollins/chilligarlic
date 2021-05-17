@@ -14,6 +14,8 @@ module.exports = {
     main: './src/js/index.js',
     header: './src/js/components/header.js',
     footer: './src/js/components/footer.js',
+    search: './src/js/controllers/searchController.js',
+    recipe: './src/js/controllers/recipeController.js',
   },
   // NODE_ENV is provided to us by cross-env package.
   mode: process.env.NODE_ENV,
@@ -21,14 +23,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
+      chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
       filename: 'searchResults.html',
       template: './src/searchResults.html',
+      chunks: ['main', 'search'],
     }),
     new HtmlWebpackPlugin({
       filename: 'recipe.html',
       template: './src/recipe.html',
+      chunks: ['main', 'recipe'],
     }),
     new CleanWebpackPlugin(),
   ],

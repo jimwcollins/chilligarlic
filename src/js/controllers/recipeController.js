@@ -11,7 +11,10 @@ import * as recipeView from '../views/recipeView';
 import { ctrlFaves } from './favesController';
 import { ctrlShopList } from './shopListController';
 
-export const ctrlRecipe = async () => {
+const ctrlRecipe = async () => {
+  console.log('In recipe controller');
+  console.log(state);
+
   // // 0. Add recipe event listeners
   ctrlAddRecipeListeners();
 
@@ -121,7 +124,6 @@ const ctrlAddRecipeListeners = () => {
 
   // Handle mobile recipe nav
   const mobNavs = document.querySelectorAll('.recipe__mobNav');
-  console.log(mobNavs);
 
   if (mobNavs) {
     mobNavs.forEach((mobNav) => {
@@ -141,3 +143,5 @@ const ctrlAddRecipeListeners = () => {
     });
   }
 };
+
+ctrlRecipe();

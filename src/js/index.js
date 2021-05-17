@@ -20,8 +20,8 @@ import Header from './components/header';
 import SidePanel from './components/sidePanel';
 import Footer from './components/footer';
 
-import { ctrlSearch } from './controllers/searchController';
-import { ctrlRecipe } from './controllers/recipeController';
+// import { ctrlSearch } from './controllers/searchController';
+// import { ctrlRecipe } from './controllers/recipeController';
 import { initFaves } from './controllers/favesController';
 import { initShopList } from './controllers/shopListController';
 
@@ -29,24 +29,19 @@ import { initShopList } from './controllers/shopListController';
  * Setup code
  **************/
 
+console.log('Launching app');
+
 // Global state of the app
 // includes Search object, current Recipe object, shopping list object, liked recipes
 const state = {};
+console.log('state in index', state);
 
 // TESTING
 window.state = state;
 
-// Add event listener upon page load, then check which page we're on
+// Add event listener upon page load
 window.addEventListener('load', () => {
   // Initialise faves and shopping list, restoring from storage if possible
   initFaves();
   initShopList();
-
-  if (location.pathname === domStrings.searchPage) {
-    // If we're on the search results page, set the state then call ctrlSearch function
-    ctrlSearch();
-  } else if (location.pathname === domStrings.recipePage) {
-    // If we're on the recipe page, call ctrlRecipe function
-    ctrlRecipe();
-  }
 });
