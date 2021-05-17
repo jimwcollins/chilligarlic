@@ -29,6 +29,8 @@
 
 import { fetchRecipe } from './Api';
 
+import recipeImagePH from '../../img/Recipe/Recipe_placeholder.jpg';
+
 export default class Recipe {
   constructor(id) {
     this.id = id;
@@ -52,7 +54,7 @@ export default class Recipe {
       if (recipe.image) {
         this.imageUrl = `https://spoonacular.com/recipeImages/${this.id}-636x393.${recipe.imageType}`;
       } else {
-        this.imageUrl = '/img/Recipe/Recipe_placeholder.jpg';
+        this.imageUrl = recipeImagePH;
       }
     } catch (error) {
       alert(error);

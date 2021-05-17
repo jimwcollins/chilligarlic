@@ -20,8 +20,6 @@ import Header from './components/header';
 import SidePanel from './components/sidePanel';
 import Footer from './components/footer';
 
-// import { ctrlSearch } from './controllers/searchController';
-// import { ctrlRecipe } from './controllers/recipeController';
 import { initFaves } from './controllers/favesController';
 import { initShopList } from './controllers/shopListController';
 

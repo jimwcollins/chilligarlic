@@ -45,9 +45,21 @@ module.exports = {
         use: ['html-loader'],
       },
       {
-        // Handle all image types using file loader
+        // Handle svgs using file loader
         // Copies image to dist folder
-        test: /\.(svg|jpg|jpeg|png|gif)$/,
+        test: /\.(svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]', // Specify output format, including hash for cache busting
+            context: 'src',
+          },
+        },
+      },
+      {
+        // Handle all other image types using file loader
+        // Copies image to dist folder
+        test: /\.(jpg|jpeg|png|gif)$/,
         use: {
           loader: 'file-loader',
           options: {
