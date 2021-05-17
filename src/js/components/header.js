@@ -309,19 +309,19 @@ class Header extends HTMLElement {
     }
 
     // Handle mobile search
-    document
-      .querySelector('.header__mobSearch__icon')
-      .addEventListener('click', () => handleMobSearch());
+    const mobSearchBtn = document.querySelector('.header__mobSearch__icon');
+
+    mobSearchBtn.addEventListener('click', () => handleMobSearch());
 
     document
       .getElementById('mobSearch__clear')
       .addEventListener('click', () => handleMobSearch());
 
     const handleMobSearch = () => {
-      const mobSearchIcon = document.querySelector('.header__mobSearch__icon');
       const mobSearchIconSvg = document.querySelector(
         '.header__mobSearch__icon__svg'
       );
+
       const mobSearch = document.querySelector('.header__mobSearch');
       const mobForm = document.querySelector('.header__mobSearch__form');
       const mobControls = document.querySelector(
@@ -335,14 +335,12 @@ class Header extends HTMLElement {
 
         setTimeout(() => {
           mobSearch.classList.remove('header__mobSearch--active');
-          mobSearchIcon.classList.remove('header__mobSearch__icon--active');
-          mobSearchIconSvg.classList.remove(
-            'header__mobSearch__icon__svg--active'
-          );
+          mobSearchBtn.classList.remove('header__icon--active');
+          mobSearchIconSvg.classList.remove('header__icon__svg--active');
         }, 400);
       } else {
-        mobSearchIcon.classList.add('header__mobSearch__icon--active');
-        mobSearchIconSvg.classList.add('header__mobSearch__icon__svg--active');
+        mobSearchBtn.classList.add('header__icon--active');
+        mobSearchIconSvg.classList.add('header__icon__svg--active');
         mobSearch.classList.add('header__mobSearch--active');
 
         setTimeout(() => {

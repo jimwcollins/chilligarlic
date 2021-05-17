@@ -27,12 +27,9 @@ import { initShopList } from './controllers/shopListController';
  * Setup code
  **************/
 
-console.log('Launching app');
-
 // Global state of the app
 // includes Search object, current Recipe object, shopping list object, liked recipes
 const state = {};
-console.log('state in index', state);
 
 // TESTING
 window.state = state;

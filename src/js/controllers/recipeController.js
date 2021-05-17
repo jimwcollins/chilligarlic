@@ -12,9 +12,6 @@ import { ctrlFaves } from './favesController';
 import { ctrlShopList } from './shopListController';
 
 const ctrlRecipe = async () => {
-  console.log('In recipe controller');
-  console.log(state);
-
   // // 0. Add recipe event listeners
   ctrlAddRecipeListeners();
 

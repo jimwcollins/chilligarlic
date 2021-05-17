@@ -11,9 +11,6 @@ import Search from '../models/Search';
 
 // Handle the search
 const ctrlSearch = async () => {
-  console.log('In search controller');
-  console.log(state);
-
   // Get search input (from url)
   const query = searchView.getSearchInput();
 
