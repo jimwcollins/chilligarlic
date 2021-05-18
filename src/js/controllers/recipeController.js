@@ -12,8 +12,9 @@ import { ctrlFaves } from './favesController';
 import { ctrlShopList } from './shopListController';
 
 const ctrlRecipe = async () => {
-  // // 0. Add recipe event listeners
-  ctrlAddRecipeListeners();
+  // First display loading spinner
+  const loadSpinner = document.querySelector('load-spinner');
+  loadSpinner.setAttribute('show', '');
 
   // Get params and set recipe ID and return status
   const { recipeID } = recipeView.getRecipeParams();
@@ -24,8 +25,12 @@ const ctrlRecipe = async () => {
       // Determine if recipe is a fave or added to shopping list
       if (state.faves.isFave(recipeID)) state.recipe.isFave = true;
       if (state.shopList.ingsAdded(recipeID)) state.recipe.ingsAdded = true;
-      // Render to UI
+
+      // Remove spinner and render results on UI
+      loadSpinner.removeAttribute('show');
       recipeView.renderRecipe(state.recipe);
+
+      ctrlAddRecipeListeners();
     } catch (error) {
       alert('Error retrieving recipe');
       console.log(error);

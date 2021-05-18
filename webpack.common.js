@@ -34,7 +34,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'recipe.html',
       template: './src/recipe.html',
-      chunks: ['main', 'recipe'],
+      chunks: ['main', 'recipe', 'loadSpinner'],
     }),
     new CleanWebpackPlugin(),
   ],

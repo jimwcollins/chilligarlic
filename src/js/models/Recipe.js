@@ -57,8 +57,8 @@ export default class Recipe {
         this.imageUrl = recipeImagePH;
       }
     } catch (error) {
-      alert(error);
       console.log(error);
+      throw error;
     }
   } // End getResults method
 
