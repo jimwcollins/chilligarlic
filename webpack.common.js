@@ -14,6 +14,7 @@ module.exports = {
     main: './src/js/index.js',
     header: './src/js/components/header.js',
     footer: './src/js/components/footer.js',
+    loadSpinner: './src/js/components/loadSpinner.js',
     search: './src/js/controllers/searchController.js',
     recipe: './src/js/controllers/recipeController.js',
   },
@@ -28,7 +29,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'searchResults.html',
       template: './src/searchResults.html',
-      chunks: ['main', 'search'],
+      chunks: ['main', 'search', 'loadSpinner'],
     }),
     new HtmlWebpackPlugin({
       filename: 'recipe.html',

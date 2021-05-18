@@ -29,7 +29,8 @@ export default class Search {
       if (page === 1) this.numTotal = result.totalResults;
       if (this.numRetrieved === this.numTotal) this.allRetrieved = true;
     } catch (error) {
-      alert(error);
+      console.log('Error retrieving results', error);
+      throw error;
     }
   } // End getResults method
 

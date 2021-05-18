@@ -11,6 +11,10 @@ import Search from '../models/Search';
 
 // Handle the search
 const ctrlSearch = async () => {
+  // First display loading spinner
+  const loadSpinner = document.querySelector('load-spinner');
+  loadSpinner.setAttribute('show', '');
+
   // Get search input (from url)
   const query = searchView.getSearchInput();
 
@@ -24,6 +28,8 @@ const ctrlSearch = async () => {
       await state.search.getResults();
     } catch (error) {
       alert('Something went wrong with the search...');
+      console.log('Error in controller:', error);
+      return;
     }
   } else {
     // There is no query so attempt to retrieve a saved search
@@ -34,7 +40,9 @@ const ctrlSearch = async () => {
   // Now persist the search object
   state.search.persist();
 
-  // Render results on UI
+  // Remove spinner and render results on UI
+  loadSpinner.removeAttribute('show');
+
   searchView.renderResults(
     state.search.query,
     state.search.allResults,
@@ -66,7 +74,6 @@ const ctrlFetchMoreResults = async () => {
   const page = state.search.page + 1;
 
   try {
-    console.log('Finding results for page:', page);
     await state.search.getResults(page);
   } catch (error) {
     alert('Something went wrong with the search...');

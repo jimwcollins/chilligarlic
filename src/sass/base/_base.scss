@@ -29,3 +29,7 @@ html {
 body {
   overscroll-behavior-y: none; // This prevents overscrolling of page past top/bottom boundaries
 }
+
+main {
+  min-height: calc(100vh - 25rem);
+}
